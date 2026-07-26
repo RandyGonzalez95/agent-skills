@@ -206,10 +206,20 @@ the task is and how to complete it.
      `includeItemDescription: true` — gets column values (Notes, Priority, Category, Status,
      Due Date) and the item's description body.
    - `get_updates` with `objectId: <id>`, `objectType: "Item"`, `includeAssets: true`,
-     `includeReplies: true` — comments often contain the actual spec text or a doc link that
-     isn't anywhere else on the item.
+     `includeReplies: true` — **always call this, on every task, no exceptions.** Comments are
+     frequently where the actual spec, a doc link, or a specific instruction lives — sometimes
+     the *only* place it lives, with the item description/Notes left empty (this has happened:
+     a task with nothing else on it had the real instruction buried in a comment).
    - Scan the Notes column, description, and update text for URLs. If a monday update has file
      assets attached, note their asset IDs.
+   - **Read every update/comment and reply in full, line by line — don't skim for a
+     topic-level match and move on.** A comment can be a long, multi-topic dump where most of
+     it is unrelated noise (a shared running list, a brain-dump touching several projects) but
+     one line in the middle is the actual relevant instruction for *this* task. Judge relevance
+     line by line, not comment by comment — a comment being mostly irrelevant is not grounds to
+     treat it as entirely irrelevant. If you do find genuinely irrelevant content, say so and
+     explain briefly why (e.g. "covers other projects, no mention of X"), don't just silently
+     drop it.
 3. **Resolve every doc link found** using the tools listed in Setup — Google Drive for Google
    links, `get_assets` + fetch for monday attachments, `WebFetch` for anything else. Always
    attempt the direct read even if the full text also appears pasted somewhere on the task —
@@ -245,6 +255,11 @@ the task is and how to complete it.
 - Never fabricate page IDs, property values, catalog/log/tool contents, or "accomplishments" —
   every claim must trace back to a tool call made in this invocation or something the user
   explicitly told you.
+- **Always pull and actually read task comments/updates for Task Docs and Work Log task
+  references — never skip `get_updates` and never skim it.** Read line by line; a long or
+  multi-topic comment can still contain one relevant instruction worth surfacing even if the
+  rest of it is noise. Missing something because a comment "looked" irrelevant at a glance is
+  the failure mode to actively guard against.
 - Don't change database schemas (add/remove/rename properties) without the user asking — if a
   write fails on a missing property, report it and ask before running `notion-update-data-source`.
 - Keep Work Log and Tools content genuinely concise — short bullets, not paragraphs. This is a
