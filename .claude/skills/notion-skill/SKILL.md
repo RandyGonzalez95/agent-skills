@@ -1,6 +1,6 @@
 ---
 name: notion-skill
-description: Manages Randy's Notion workspace — the AI Skills catalog, the Blue Dot Agency Tools reference, and the Work Log (daily/weekly progress notes). Handles requests like "add this skill to Notion", "log today's progress", "what did I work on this week", "add a note on HubSpot", or "pull today's monday tasks into my log". Always drives Notion live through the Notion MCP tools, never from memory. Has READ-ONLY access to monday.com — it only reads task names/status/descriptions to document them in Notion, and never creates, edits, or moves anything on a monday board.
+description: Manages Randy's Notion workspace — the AI Skills catalog, the Blue Dot Agency Tools reference, the Work Log (daily/weekly progress notes), and Task Docs (deep documentation pulled from monday.com tasks, including linked docs). Handles requests like "add this skill to Notion", "log today's progress", "what did I work on this week", "add a note on HubSpot", "pull today's monday tasks into my log", "document this monday task", or "outline how to complete task X". Always drives Notion live through the Notion MCP tools, never from memory. Has READ-ONLY access to monday.com — it reads task names/status/descriptions/updates/attached docs to document them in Notion, and never creates, edits, or moves anything on a monday board.
 ---
 
 # notion-skill
@@ -13,6 +13,9 @@ invocation must make at least one live MCP call before answering.
 2. **Blue Dot Agency Tools** — reference notes on tools/platforms the business runs on.
 3. **Blue Dot Agency Work Log** — daily/weekly progress notes, optionally pulling task context
    from monday.com (read-only).
+4. **Blue Dot Agency Task Docs** — deep documentation for a monday.com task: description, notes,
+   update history, and the contents of any linked doc, distilled into a summary and a "how to
+   complete this" outline (read-only against monday.com).
 
 ## Setup
 
@@ -23,12 +26,27 @@ this skill needs:
 ToolSearch: select:mcp__claude_ai_Notion__notion-fetch,mcp__claude_ai_Notion__notion-create-pages,mcp__claude_ai_Notion__notion-update-page,mcp__claude_ai_Notion__notion-query-data-sources,mcp__claude_ai_Notion__notion-search,mcp__claude_ai_Notion__notion-update-data-source
 ```
 
-For Work Log entries that reference monday.com tasks, also load these — **read-only tools
-only**, see the Guardrails section:
+For Work Log or Task Docs entries that reference monday.com tasks, also load these —
+**read-only tools only**, see the Guardrails section:
 
 ```
-ToolSearch: select:mcp__claude_ai_monday_com__get_board_items_page,mcp__claude_ai_monday_com__get_board_info,mcp__claude_ai_monday_com__board_insights,mcp__claude_ai_monday_com__get_updates
+ToolSearch: select:mcp__claude_ai_monday_com__get_board_items_page,mcp__claude_ai_monday_com__get_board_info,mcp__claude_ai_monday_com__board_insights,mcp__claude_ai_monday_com__get_updates,mcp__claude_ai_monday_com__get_assets
 ```
+
+Task Docs also needs to read whatever a linked doc actually is. Load these as needed, on top of
+the above — never guess a doc's contents, always fetch it:
+
+```
+ToolSearch: select:WebFetch,mcp__claude_ai_Google_Drive__read_file_content,mcp__claude_ai_Google_Drive__search_files,mcp__claude_ai_Google_Drive__get_file_metadata
+```
+
+- Google Docs/Sheets/Slides links (`docs.google.com`, `drive.google.com`) → Google Drive tools
+  (`read_file_content`, or `search_files` first if you only have a name, not a link).
+- A monday.com file/attachment (from an update's `assets` or a Files-type column) → `get_assets`
+  with its asset ID to resolve a temporary download URL, then fetch that URL.
+- Any other web link (Word Online, Notion, a generic doc URL, etc.) → `WebFetch`.
+- If a link can't be read (permissions, not shared, unsupported format), say so explicitly in
+  the Notion entry rather than guessing at the content or skipping it silently.
 
 ## Database reference
 
@@ -37,6 +55,10 @@ ToolSearch: select:mcp__claude_ai_monday_com__get_board_items_page,mcp__claude_a
 | AI Skills | `collection://3a79fced-c090-4523-ae5a-1d877d47c8e1` | workspace |
 | Tools | `collection://58853d91-a1ad-449b-9004-6cec14ce5ed1` | Blue Dot Agency hub page (`3a90afb6-b302-81b5-8242-f86d7f730b3d`) |
 | Work Log | `collection://7bd196ea-1d42-42c8-ae9f-4e0d8d63bf7f` | Blue Dot Agency hub page (`3a90afb6-b302-81b5-8242-f86d7f730b3d`) |
+| Task Docs | `collection://1c5e3f45-0798-4d78-b477-a0dcac838b70` | Blue Dot Agency hub page (`3a90afb6-b302-81b5-8242-f86d7f730b3d`) |
+
+Randy's default board is always **"Randy's Tasks"** (`5029840882`) unless he names a different
+board.
 
 If any write reports an unknown property, the schema has drifted — `fetch` the data source URL
 to get the current schema before retrying, and update the tables below.
@@ -88,6 +110,37 @@ Page content format — keep it tight, bullets only, no prose paragraphs:
 For a `Weekly` entry, replace the two daily sections with a single **This week** bullet summary
 (3-6 bullets max, roll up the daily entries rather than re-listing every task).
 
+### Task Docs schema
+
+| Property | Type | Notes |
+|---|---|---|
+| Name | title | Task name, copied verbatim from monday |
+| Monday Task | url | Link to the monday item |
+| Monday Status | select | Snapshot of the Status column at sync time — mirrors monday's labels but is **not live**, see Guardrails |
+| Priority | select | Snapshot of the Priority column: `Critical`, `High`, `Medium`, `Low` |
+| Category | select | Snapshot of the Category column: `Development`, `Design`, `Testing`, `Documentation` |
+| Source Doc | url | The linked doc (Google Doc, Word Online, etc.), if the task has one |
+| Last Synced | date | The date this documentation was pulled — always today, not the task's due date |
+
+Page content format:
+
+```
+**Summary**
+- 1-3 bullets: what this task actually is
+
+**Key components** (only if the source material has real structure to summarize — skip if the task is simple)
+- ...
+
+**How to complete**
+- Concrete, ordered steps or phases pulled from the task/doc — this is the actual point of the entry
+
+**Open questions** (only if the source material flags any)
+- ...
+
+**Source**
+- Where this came from: monday description / Notes column / update text / linked doc (name the doc), plus the monday item link
+```
+
 ## Capabilities
 
 ### AI Skills catalog
@@ -133,16 +186,49 @@ This is where daily/weekly progress gets documented — always dated, always con
 Always base Work Log answers on the query just run, not on earlier conversation context — the
 log changes daily.
 
+### Blue Dot Agency Task Docs
+Pulls everything available on a monday.com task and turns it into a documented outline of what
+the task is and how to complete it.
+
+1. **Default to the "Randy's Tasks" board** (`5029840882`) unless the user names a different
+   board. "The first To Do task" means the first item (by position) in the `topics` (To Do)
+   group.
+2. **Gather everything** on the task before writing anything:
+   - `get_board_items_page` with `itemIds: [<id>]`, `includeColumns: true`,
+     `includeItemDescription: true` — gets column values (Notes, Priority, Category, Status,
+     Due Date) and the item's description body.
+   - `get_updates` with `objectId: <id>`, `objectType: "Item"`, `includeAssets: true`,
+     `includeReplies: true` — comments often contain the actual spec text or a doc link that
+     isn't anywhere else on the item.
+   - Scan the Notes column, description, and update text for URLs. If a monday update has file
+     assets attached, note their asset IDs.
+3. **Resolve every doc link found** using the tools listed in Setup — Google Drive for Google
+   links, `get_assets` + fetch for monday attachments, `WebFetch` for anything else. If the full
+   content is already pasted as plain text somewhere on the task (this happens — someone pastes
+   the doc into an update), that text is the authoritative source; you don't need to re-fetch the
+   same content externally, but do still note where it came from.
+4. **Write one Task Docs entry** (see schema above) — check first whether one already exists for
+   this task (query by `Monday Task` URL) and update it in place rather than duplicating if so.
+   The content should read as "what is this and how do I do it," not a transcript — condense,
+   don't paste the whole source doc verbatim unless it's already short.
+5. Report back what you did in the chat too: name the task, link the Notion entry, and give a
+   one-line summary — don't make the user go open Notion to find out what happened.
+
 ## Guardrails
 
 - **Never write to monday.com from this skill.** This skill has read-only access to
-  monday.com — it may call `get_board_items_page`, `get_board_info`, `board_insights`, and
-  `get_updates` to pull task names/status/descriptions for documentation purposes, and nothing
-  else. Never call `create_item`, `change_item_column_values`, `all_api_write` (write mode),
-  `create_update`, `move_object`, `create_automation`, `manage_automations`, or any other
+  monday.com — it may call `get_board_items_page`, `get_board_info`, `board_insights`,
+  `get_updates`, and `get_assets` (which only resolves a temporary download URL, it doesn't
+  modify anything) to pull task details and attached docs for documentation purposes, and
+  nothing else. Never call `create_item`, `change_item_column_values`, `all_api_write` (write
+  mode), `create_update`, `move_object`, `create_automation`, `manage_automations`, or any other
   monday write tool from this skill — not even if the user says "mark it done" while asking for
-  a log entry. Updating monday itself is **monday-skill's** job; if the user wants the board
-  changed, tell them so and hand off rather than doing it here.
+  a log or task doc. Updating monday itself is **monday-skill's** job; if the user wants the
+  board changed, tell them so and hand off rather than doing it here.
+- `Monday Status`/`Priority`/`Category` on a Task Docs entry are a **point-in-time snapshot**,
+  not a live sync — if the task changes on monday later, the Notion entry doesn't update itself.
+  Say so if the user seems to be treating it as current when it might be stale (re-run the doc
+  capability to refresh it).
 - Never fabricate page IDs, property values, catalog/log/tool contents, or "accomplishments" —
   every claim must trace back to a tool call made in this invocation or something the user
   explicitly told you.
