@@ -125,20 +125,28 @@ For a `Weekly` entry, replace the two daily sections with a single **This week**
 Page content format:
 
 ```
-**Summary**
-- 1-3 bullets: what this task actually is
+**Task summary**
+- 1-2 bullets: what the monday task itself is asking for
 
-**Key components** (only if the source material has real structure to summarize — skip if the task is simple)
-- ...
+**Document summary**
+- A real summary of the linked source doc's actual content — what it says, its structure,
+  what it covers. This is a summary of the DOCUMENT, distinct from the task summary above.
+  Omit this section only if there's no linked doc / no extra material beyond the task itself.
 
-**How to complete**
-- Concrete, ordered steps or phases pulled from the task/doc — this is the actual point of the entry
+**Notes: how to complete this task**
+- Concrete, actionable, ideally ordered steps for actually doing the work — synthesized from
+  the doc + task, not just a copy of the doc's own outline. This is the actual point of the
+  entry: someone should be able to read this section alone and know what to do next.
 
 **Open questions** (only if the source material flags any)
 - ...
 
 **Source**
-- Where this came from: monday description / Notes column / update text / linked doc (name the doc), plus the monday item link
+- What was actually read and how: monday description / Notes column / update text / linked doc
+  (name it) — plus the monday item link and, if a linked doc exists, its link.
+- If a linked doc could NOT be read (no access, 401, unsupported format), say so explicitly here
+  and note what to do about it (e.g. "share it with the connected Google account to enable a
+  direct read") — never silently fall back without flagging it.
 ```
 
 ## Capabilities
@@ -203,14 +211,19 @@ the task is and how to complete it.
    - Scan the Notes column, description, and update text for URLs. If a monday update has file
      assets attached, note their asset IDs.
 3. **Resolve every doc link found** using the tools listed in Setup — Google Drive for Google
-   links, `get_assets` + fetch for monday attachments, `WebFetch` for anything else. If the full
-   content is already pasted as plain text somewhere on the task (this happens — someone pastes
-   the doc into an update), that text is the authoritative source; you don't need to re-fetch the
-   same content externally, but do still note where it came from.
+   links, `get_assets` + fetch for monday attachments, `WebFetch` for anything else. Always
+   attempt the direct read even if the full text also appears pasted somewhere on the task —
+   the doc is the primary source; monday text is a fallback, not a substitute.
+   - If the read fails (401, not found, unsupported format, not shared with the connected
+     account), don't silently fall back — try any pasted text on the task as a secondary source
+     if it's there, and **always** state in the entry's Source section that the direct read
+     failed and why, so Randy knows the summary is one step removed from the actual doc.
 4. **Write one Task Docs entry** (see schema above) — check first whether one already exists for
    this task (query by `Monday Task` URL) and update it in place rather than duplicating if so.
-   The content should read as "what is this and how do I do it," not a transcript — condense,
-   don't paste the whole source doc verbatim unless it's already short.
+   Keep **Task summary** and **Document summary** genuinely distinct — the task summary is what
+   monday says the task is, the document summary is what the linked doc actually contains. Then
+   **Notes: how to complete this task** turns that into action — don't just restate the doc's
+   own section headings, synthesize what someone would actually need to do next.
 5. Report back what you did in the chat too: name the task, link the Notion entry, and give a
    one-line summary — don't make the user go open Notion to find out what happened.
 
