@@ -1,0 +1,9 @@
+{
+  "name": "web-design-skill-tools",
+  "private": true,
+  "type": "module",
+  "description": "Playwright-based visual extraction tool for web-design-skill. Not published; installed lazily per skill location (repo copy and global copy each run their own npm install).",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

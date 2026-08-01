@@ -54,3 +54,4 @@ version, so the repo always wins.
 |---|---|
 | [monday-skill](.claude/skills/monday-skill/SKILL.md) | Manages the "Randy's Tasks" board on monday.com |
 | [notion-skill](.claude/skills/notion-skill/SKILL.md) | Manages the AI Skills catalog in Notion |
+| [web-design-skill](.claude/skills/web-design-skill/SKILL.md) | Self-learning UI/visual design: ingests user-given reference sites, sources components from 21st.dev, delegates execution to the frontend-design plugin, and remembers feedback |

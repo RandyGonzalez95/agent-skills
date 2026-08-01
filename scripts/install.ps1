@@ -53,6 +53,12 @@ foreach ($dir in $skillDirs) {
     }
     Copy-Item -Recurse -Path $dir.FullName -Destination $dest
 
+    # Skill tooling (e.g. web-design-skill/tools) may have its own node_modules -
+    # each install location bootstraps that independently (npm install), so don't
+    # copy it wholesale here.
+    Get-ChildItem -Path $dest -Recurse -Directory -Filter node_modules -ErrorAction SilentlyContinue |
+        ForEach-Object { Remove-Item -Recurse -Force $_.FullName -Confirm:$false }
+
     $verb = if ($existed) { "Updated" } else { "Installed" }
     Write-Host "$verb $($dir.Name) -> $dest"
 }
