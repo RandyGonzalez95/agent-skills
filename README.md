@@ -56,3 +56,12 @@ version, so the repo always wins.
 | [notion-skill](.claude/skills/notion-skill/SKILL.md) | Manages the AI Skills catalog in Notion |
 | [web-design-skill](.claude/skills/web-design-skill/SKILL.md) | Self-learning UI/visual design: ingests user-given reference sites, sources components from 21st.dev, delegates execution to the frontend-design plugin, and remembers feedback |
 | [shopify-workflow](.claude/skills/shopify-workflow/SKILL.md) | Generates Shopify Flow AI prompts and webhook/API plans from a smart-tag definition list |
+| [ui-ux-pro-max](.claude/skills/ui-ux-pro-max/SKILL.md) | Searchable UI/UX design-intelligence database: styles, color palettes, font pairings, UX guidelines, and chart types across 22 tech stacks |
+| [design](.claude/skills/design/SKILL.md) | Unified design skill: brand identity, design tokens, logo generation, CIP mockups, HTML presentations, banners, icons, social photos |
+| [design-system](.claude/skills/design-system/SKILL.md) | Token architecture (primitive→semantic→component), CSS variables, component specs, slide generation |
+| [brand](.claude/skills/brand/SKILL.md) | Brand voice, visual identity, messaging frameworks, asset management, brand consistency |
+| [banner-design](.claude/skills/banner-design/SKILL.md) | Multi-format banner design for social, ads, web, and print with AI-generated visuals |
+| [slides](.claude/skills/slides/SKILL.md) | Strategic HTML presentations with Chart.js, design tokens, and copywriting formulas |
+| [ui-styling](.claude/skills/ui-styling/SKILL.md) | Accessible UI components with shadcn/ui, Tailwind CSS, and canvas-based visual designs |
+
+_The 7 skills above (ui-ux-pro-max, design, design-system, brand, banner-design, slides, ui-styling) come from the [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) plugin bundle (MIT, NextLevelBuilder) — installed as a set since they reference each other._

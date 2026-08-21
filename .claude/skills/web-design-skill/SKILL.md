@@ -1,6 +1,6 @@
 ---
 name: web-design-skill
-description: Use for visual/UI design work — analyzing reference sites the user explicitly provides ("get inspiration from this site", "what does X look like", "redesign based on these references"), building or reshaping UI ("design this page", "build this component", "make it look like X"), sourcing reusable components from 21st.dev, or recording/applying feedback on a design ("here's feedback on that design", "update our style guide", "what's our house style"). Maintains a persistent, self-updating design knowledge base (ingested reference specs, sourced components, a living house style guide, a feedback log) and delegates actual visual execution to the frontend-design plugin. Never analyzes or absorbs style from a website the user hasn't explicitly named — no autonomous browsing for "inspiration."
+description: Use for visual/UI design work — analyzing reference sites the user explicitly provides ("get inspiration from this site", "what does X look like", "redesign based on these references"), building or reshaping UI ("design this page", "build this component", "make it look like X"), sourcing reusable components from 21st.dev (via the `21st` MCP server), pulling design-intelligence recommendations from the `ui-ux-pro-max` skill (styles, color palettes, font pairings, UX guidelines, chart types), or recording/applying feedback on a design ("here's feedback on that design", "update our style guide", "what's our house style"). Maintains a persistent, self-updating design knowledge base (ingested reference specs, sourced components, a living house style guide, a feedback log) and delegates actual visual execution to the frontend-design plugin. Never analyzes or absorbs style from a website the user hasn't explicitly named — no autonomous browsing for "inspiration."
 ---
 
 # web-design-skill
@@ -29,6 +29,27 @@ into the turn — this skill does not reimplement its design process, it feeds i
 ```
 Skill: frontend-design:frontend-design
 ```
+
+For the design-intelligence layer (styles, color palettes, font pairings, UX guidelines, chart
+types), invoke the `ui-ux-pro-max` skill the same way:
+
+```
+Skill: ui-ux-pro-max
+```
+
+For component sourcing (Capability 2), this skill uses the `21st` MCP server (registered via
+`claude mcp add --transport http 21st https://21st.dev/api/mcp --header "x-api-key: ..."`, scope
+`user` — so it's available in every project, not just this repo) instead of scraping 21st.dev
+pages. Its tools are deferred — load them before first use in a given session:
+
+```
+ToolSearch: 21st component search
+```
+
+Verify the server itself is reachable with `claude mcp list` (look for `21st ... ✔ Connected`) if
+`ToolSearch` comes back empty. If the server is missing, unhealthy, or its tools genuinely aren't
+discoverable, fall back to `WebFetch` against 21st.dev search/listing pages (the old method) and
+say explicitly that MCP was unavailable — don't silently degrade.
 
 For site ingestion (Capability 1), this skill uses a real headless browser via `tools/extract.mjs`
 (Playwright) — `WebFetch` alone only sees markdown-converted content, no CSS or class names
@@ -120,14 +141,17 @@ which method was used — never blend a guess in silently to fill a gap either m
 Before building any nontrivial UI piece from scratch, check whether 21st.dev already has a
 matching component:
 
-1. `WebFetch` 21st.dev search/listing pages for the component type needed (e.g. pricing table,
-   nav bar, testimonial grid).
+1. Load the `21st` MCP server's tools (`ToolSearch: 21st component search` — see Setup) and use
+   its search/generate tools to find candidates for the component type needed (e.g. pricing
+   table, nav bar, testimonial grid). It returns structured results — and, where supported,
+   ready-to-use code — directly, so prefer it over scraping. Fall back to `WebFetch` against
+   21st.dev search/listing pages only if the MCP server is unavailable (see Setup), and say so.
 2. Evaluate candidates against the brief's style direction (from `style-guide.md` and/or any
    ingested site spec for this project) — don't adopt something that fights the established
    aesthetic just because it's convenient.
 3. Log the outcome in `knowledge/components.md` regardless of whether you adopted it —
-   Adopted as-is / Adapted / Rejected, with a one-line reason. This makes the log useful even
-   when the answer was "no."
+   Adopted as-is / Adapted / Rejected, with a one-line reason and which method sourced it
+   (`21st MCP` vs. `WebFetch`). This makes the log useful even when the answer was "no."
 
 21st.dev is for component *parts*, not for house style learning — don't let it influence
 `style-guide.md`. That knowledge stream is reserved for sites ingested under Capability 1 and
@@ -138,12 +162,18 @@ feedback under Capability 4.
 1. Read `knowledge/style-guide.md` first. Apply established house style unless the brief
    explicitly asks for a distinct new direction — say so if you're deliberately diverging.
 2. Check `knowledge/sites/*.md` for any reference relevant to this brief.
-3. Run Capability 2 for reusable pieces the brief calls for.
-4. Invoke the `frontend-design` plugin skill to actually execute, feeding it: the brief, the
-   relevant style-guide entries, any ingested site specs, and any sourced components. Follow
-   its brainstorm → plan → critique → build → critique process as written — this skill does not
-   duplicate that logic.
-5. After building, decide what's worth remembering (see Capability 4) — don't skip this step
+3. Invoke `Skill: ui-ux-pro-max` for the design-intelligence layer — styles, color palettes, font
+   pairings, and UX guidelines matched to the brief's product type and target stack. Treat its
+   output as an informed default, not an override: house style (`style-guide.md`) and any
+   ingested site spec win on conflict, since those trace to this project's own explicit
+   preferences, while `ui-ux-pro-max` is a general-purpose database with no knowledge of this
+   project's history.
+4. Run Capability 2 for reusable pieces the brief calls for.
+5. Invoke the `frontend-design` plugin skill to actually execute, feeding it: the brief, the
+   relevant style-guide entries, any ingested site specs, the `ui-ux-pro-max` recommendations,
+   and any sourced components. Follow its brainstorm → plan → critique → build → critique process
+   as written — this skill does not duplicate that logic.
+6. After building, decide what's worth remembering (see Capability 4) — don't skip this step
    just because the user didn't explicitly ask for feedback yet; at minimum note in
    `components.md` what got used.
 
@@ -171,6 +201,9 @@ When the user reacts to a design — during or after a build:
   browsing "for inspiration." If no site was given and the brief is style-light, fall back to
   `style-guide.md` plus the `frontend-design` skill's own judgment.
 - **21st.dev is component sourcing only** — never let it feed `style-guide.md`.
+- **`ui-ux-pro-max` is a general recommendation source, not project memory.** Its output can
+  inform a build but never silently overrides `style-guide.md` or an ingested site spec, and it
+  doesn't get logged into the knowledge base the way sites/components/feedback do.
 - **Don't hand-wave `style-guide.md` edits.** Every entry needs a traceable source (a feedback
   quote, a site spec, a repeated pattern across builds) and a date. Treat edits as
   append-then-consolidate, not silent overwrite — if reconciling contradictory entries, say what
