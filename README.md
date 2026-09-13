@@ -56,6 +56,7 @@ version, so the repo always wins.
 | [notion-skill](.claude/skills/notion-skill/SKILL.md) | Manages the AI Skills catalog in Notion |
 | [web-design-skill](.claude/skills/web-design-skill/SKILL.md) | Self-learning UI/visual design: ingests user-given reference sites, sources components from 21st.dev, delegates execution to the frontend-design plugin, and remembers feedback |
 | [shopify-workflow](.claude/skills/shopify-workflow/SKILL.md) | Generates Shopify Flow AI prompts and webhook/API plans from a smart-tag definition list |
+| [cyber-security](.claude/skills/cyber-security/SKILL.md) | Reviews application code, dependencies, configuration, user flows, and CI/CD for security risks; reports evidence and prioritized fixes |
 | [ui-ux-pro-max](.claude/skills/ui-ux-pro-max/SKILL.md) | Searchable UI/UX design-intelligence database: styles, color palettes, font pairings, UX guidelines, and chart types across 22 tech stacks |
 | [design](.claude/skills/design/SKILL.md) | Unified design skill: brand identity, design tokens, logo generation, CIP mockups, HTML presentations, banners, icons, social photos |
 | [design-system](.claude/skills/design-system/SKILL.md) | Token architecture (primitive→semantic→component), CSS variables, component specs, slide generation |

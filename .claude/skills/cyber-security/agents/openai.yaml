@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cyber Security"
+  short_description: "Review application code and workflows for security risks"
+  default_prompt: "Use $cyber-security to audit this workspace's code, dependencies, configuration, and application workflows, then produce a prioritized report with evidence and recommended fixes."
