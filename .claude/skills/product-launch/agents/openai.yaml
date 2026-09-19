@@ -1,0 +1,6 @@
+interface:
+  display_name: "Product Launch"
+  short_description: "Practical product launch workflows and review"
+  default_prompt: "Use $product-launch to help with this product launch task using the context I provide."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Sales Messaging"
+  short_description: "Practical sales messaging workflows and review"
+  default_prompt: "Use $sales-messaging to help with this sales messaging task using the context I provide."
+policy:
+  allow_implicit_invocation: true

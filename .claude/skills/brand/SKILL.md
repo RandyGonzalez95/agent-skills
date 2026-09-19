@@ -1,97 +1,30 @@
 ---
 name: brand
-description: Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.
-argument-hint: "[update|review|create] [args]"
+description: Define or review brand positioning, voice, messaging, visual identity, and asset guidelines. Use for reusable brand standards and consistency reviews rather than individual copy or graphic deliverables.
+license: MIT
 metadata:
   author: claudekit
-  version: "1.0.0"
+  curation: Generalized and consolidated from the supplied export
 ---
 
 # Brand
 
-Brand identity, voice, messaging, asset management, and consistency frameworks.
+Start from the actual business, audience, offer, differentiation, and existing approved assets. Ask for consequential gaps; do not substitute a previous client's identity or impose a premium aesthetic.
 
-## When to Use
+## Build the guide
 
-- Brand voice definition and content tone guidance
-- Visual identity standards and style guide development
-- Messaging framework creation
-- Brand consistency review and audit
-- Asset organization, naming, and approval
-- Color palette management and typography specs
+1. Identify the audience's problem, the offer, substantiated reasons to believe, and the desired customer action.
+2. Separate approved positioning from proposed directions. Explain meaningful tradeoffs when the direction is undecided.
+3. Define voice with observable choices: vocabulary, sentence rhythm, level of formality, warmth, and examples of suitable and unsuitable phrasing. Use actual writing samples when available.
+4. Specify visual roles: primary/supporting colors, surface and text pairings, type hierarchy, spacing, imagery, and logo usage. Distinguish measured source values from proposed values.
+5. Record approved logo variants, clear space, minimum size, permitted backgrounds, and asset provenance using the actual brand's rules. Do not invent universal logo measurements.
 
-## Quick Start
+Keep volatile facts, prices, account IDs, and campaign decisions in dated project material. The reusable skill does not serve as a business fact database.
 
-**Inject brand context into prompts:**
-```bash
-node scripts/inject-brand-context.cjs
-node scripts/inject-brand-context.cjs --json
-```
+## Review and maintenance
 
-**Validate an asset:**
-```bash
-node scripts/validate-asset.cjs <asset-path>
-```
+Review a supplied asset against the current guide, citing the exact mismatch and practical correction. Inspect text against its real background, not the palette in isolation. Keep source assets and editable files separate from exports; preserve usage rights and attribution.
 
-**Extract/compare colors:**
-```bash
-node scripts/extract-colors.cjs --palette
-node scripts/extract-colors.cjs <image-path>
-```
+Update the established project guide and token source when requested. Explain conflicts between old and new decisions rather than silently accumulating contradictory rules. Do not edit unrelated brand files or synchronize tools merely because a guide was drafted.
 
-## Brand Sync Workflow
-
-```bash
-# 1. Edit docs/brand-guidelines.md (or use /brand update)
-# 2. Sync to design tokens
-node scripts/sync-brand-to-tokens.cjs
-# 3. Verify
-node scripts/inject-brand-context.cjs --json | head -20
-```
-
-**Files synced:**
-- `docs/brand-guidelines.md` → Source of truth
-- `assets/design-tokens.json` → Token definitions
-- `assets/design-tokens.css` → CSS variables
-
-## Subcommands
-
-| Subcommand | Description | Reference |
-|------------|-------------|-----------|
-| `update` | Update brand identity and sync to all design systems | `references/update.md` |
-
-## References
-
-| Topic | File |
-|-------|------|
-| Voice Framework | `references/voice-framework.md` |
-| Visual Identity | `references/visual-identity.md` |
-| Messaging | `references/messaging-framework.md` |
-| Consistency | `references/consistency-checklist.md` |
-| Guidelines Template | `references/brand-guideline-template.md` |
-| Asset Organization | `references/asset-organization.md` |
-| Color Management | `references/color-palette-management.md` |
-| Typography | `references/typography-specifications.md` |
-| Logo Usage | `references/logo-usage-rules.md` |
-| Approval Checklist | `references/approval-checklist.md` |
-
-## Scripts
-
-| Script | Purpose |
-|--------|---------|
-| `scripts/inject-brand-context.cjs` | Extract brand context for prompt injection |
-| `scripts/sync-brand-to-tokens.cjs` | Sync brand-guidelines.md → design-tokens.json/css |
-| `scripts/validate-asset.cjs` | Validate asset naming, size, format |
-| `scripts/extract-colors.cjs` | Extract and compare colors against palette |
-
-## Templates
-
-| Template | Purpose |
-|----------|---------|
-| `templates/brand-guidelines-starter.md` | Complete starter template for new brands |
-
-## Routing
-
-1. Parse subcommand from `$ARGUMENTS` (first word)
-2. Load corresponding `references/{subcommand}.md`
-3. Execute with remaining arguments
+Deliver a concise guide or a prioritized consistency review. Graphic production belongs to graphic-design; implementation tokens belong to design-system; finished prose belongs to copywriting. These are task boundaries, not mandatory dependencies.

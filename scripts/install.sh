@@ -5,7 +5,7 @@
 #
 # Usage:
 #   ./scripts/install.sh                 # install/update all skills
-#   ./scripts/install.sh notion-skill    # install/update just one
+#   ./scripts/install.sh notion          # install/update just one
 #   ./scripts/install.sh --dry-run       # preview without copying
 
 set -euo pipefail
@@ -52,7 +52,7 @@ for dir in "$source_root"/*/; do
     rm -rf "$dest"
     cp -r "$dir" "$dest"
 
-    # Skill tooling (e.g. web-design-skill/tools) may have its own node_modules -
+    # Skill tooling (e.g. web-design/tools) may have its own node_modules -
     # each install location bootstraps that independently (npm install), so don't
     # copy it wholesale here.
     find "$dest" -type d -name node_modules -prune -exec rm -rf {} +
