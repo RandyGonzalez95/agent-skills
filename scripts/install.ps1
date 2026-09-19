@@ -1,28 +1,31 @@
 #Requires -Version 5.1
 <#
-Installs repository skills globally for Claude Code, Codex, or both.
+Installs portable skills into an explicit directory or optional harness preset.
 Previous copies are backed up outside the skill discovery directory.
 
 Usage:
-  ./scripts/install.ps1              # install/update all skills
+  ./scripts/install.ps1 -Destination ./my-agent/skills
   ./scripts/install.ps1 -Target Both -RetireSuperseded
-  ./scripts/install.ps1 -Skill notion   # install/update just one
-  ./scripts/install.ps1 -WhatIf      # preview without copying
+  ./scripts/install.ps1 -Target Codex -Skill notion
+  ./scripts/install.ps1 -Destination ./my-agent/skills -WhatIf
 #>
 param(
     [string]$Skill,
     [ValidateSet('Claude', 'Codex', 'Both')]
-    [string]$Target = 'Claude',
+    [string]$Target,
+    [string]$Destination,
     [switch]$RetireSuperseded,
     [switch]$WhatIf
 )
 
 $ErrorActionPreference = "Stop"
 if ($RetireSuperseded -and $Skill) { throw 'Retiring old names requires a full installation.' }
+if ([bool]$Target -eq [bool]$Destination) { throw 'Specify either -Destination <skills-directory> or -Target Claude|Codex|Both.' }
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$sourceRoot = Join-Path $repoRoot ".claude\skills"
+$sourceRoot = Join-Path $repoRoot 'skills'
 $destinations = @()
+if ($Destination) { $destinations += $Destination }
 if ($Target -in @('Claude', 'Both')) { $destinations += Join-Path $HOME '.claude\skills' }
 if ($Target -in @('Codex', 'Both')) {
     $codexBase = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
@@ -62,8 +65,13 @@ function Assert-SafeChild([string]$Path, [string]$Root) {
 }
 
 $stamp = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8)
-foreach ($destination in $destinations) {
-$destRoot = [IO.Path]::GetFullPath($destination)
+foreach ($installDestination in $destinations) {
+$destRoot = [IO.Path]::GetFullPath($installDestination)
+$sourceFull = [IO.Path]::GetFullPath($sourceRoot).TrimEnd('\', '/')
+$destFull = $destRoot.TrimEnd('\', '/')
+if ($destFull -eq $sourceFull -or $destFull.StartsWith($sourceFull+'\', [StringComparison]::OrdinalIgnoreCase) -or $sourceFull.StartsWith($destFull+'\', [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Installation destination must not overlap the source skills directory.'
+}
 $backupRoot = Join-Path (Split-Path -Parent $destRoot) "skill-backups\$stamp"
 foreach ($dir in $skillDirs) {
     $dest = Join-Path $destRoot $dir.Name
@@ -122,4 +130,4 @@ if (-not $WhatIf -and (Test-Path -LiteralPath $backupRoot)) { Write-Host "Previo
 
 Write-Host ""
 if ($WhatIf) { Write-Host 'Preview complete; no files changed.' }
-else { Write-Host "Done. Skills installed globally for $Target." }
+else { Write-Host 'Done. Skills copied to the selected destination(s).' }

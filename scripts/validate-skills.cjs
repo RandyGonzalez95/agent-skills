@@ -5,7 +5,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const root = path.dirname(__dirname);
-const curated = path.join(root, '.claude', 'skills');
+const curated = path.join(root, 'skills');
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e =>
