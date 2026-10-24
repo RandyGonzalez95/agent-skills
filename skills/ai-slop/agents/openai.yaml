@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Slop"
+  short_description: "Remove AI filler and write in plain language"
+  default_prompt: "Use $ai-slop to remove filler and rewrite this in plain language while preserving its facts and local conventions."
