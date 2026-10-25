@@ -50,6 +50,12 @@ Scale detail to the workspace while retaining these elements:
    assumptions, and excluded or inaccessible areas.
 3. **Coverage:** component/control, files or flows inspected, method, result, gaps.
    Use "reviewed", "tested", "not reviewed", or "not applicable" precisely.
+   For IDOR/BOLA, link the endpoint inventory, generated tests, result artifact, and
+   coverage-check output. Count discovered operations, applicable operations fully
+   passing, failing cases, missing/skipped/blocked cases, and justified exclusions.
+   State discovery limitations and retain each untested operation by name. A passing
+   coverage check validates the supplied inventory/results, not discovery completeness
+   or the correctness of the application's permission model.
 4. **Prioritized findings:** confirmed findings first; separate validation candidates
    and hardening items. Use stable IDs such as `CS-001` for follow-up work.
 5. **Verification log:** tools/versions, sanitized commands, completion status, test

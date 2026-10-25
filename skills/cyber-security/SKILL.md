@@ -14,6 +14,8 @@ do not assume a JavaScript app or mistake every suspicious pattern for a vulnera
 - **Review** is the default for "check", "scan", or "audit": inspect the workspace,
   run appropriate non-destructive checks, and write a report. Do not change application
   code, dependencies, or deployment configuration just to perform a review.
+  Generate isolated authorization test artifacts as described below; keep persistent
+  application test/CI changes for requests to implement tests, fix, or harden.
 - **Review and fix** applies when the user asks to fix, secure, or harden the app:
   implement supported local fixes and relevant regression checks, then update the
   report with what was verified and what remains. Existing authorization persists.
@@ -84,6 +86,24 @@ before invoking scanners or running the application. Select checks for the detec
 stack: dependency advisories, secret detection, static analysis, relevant existing
 tests, and targeted local regression checks. A tool is supporting evidence, not the
 entire review. Business logic and ownership checks require tracing the application.
+
+### Automated IDOR/BOLA coverage
+
+For application audits, read [references/idor-bola-testing.md](references/idor-bola-testing.md)
+and generate and run workspace-specific object authorization tests. Discover every
+endpoint/operation in scope, derive expected permissions from the application, and
+test legitimate access plus access using another user's or tenant's objects. Use the
+workspace's test framework and isolated synthetic fixtures; do not substitute a generic
+scanner or source review for executed tests. For change reviews, include affected
+operations and shared authorization callers, and label the narrower scope.
+
+Reconcile discovery with a per-operation inventory and check test results using
+[scripts/check_authorization_coverage.py](scripts/check_authorization_coverage.py).
+Keep untestable endpoints in the inventory with concrete blockers. Missing cases,
+skips, failed setup, and unavailable runtimes are coverage gaps. Every endpoint must
+be accounted for; only applicable operations with all required cases executed and
+passing can be described as tested successfully. If there is no application, report
+this phase as not applicable rather than generating a pretend suite.
 
 For each tool record its version, scope, command with secrets removed, completion
 status, and relevant output. Investigate findings and failed runs. Missing tools,
