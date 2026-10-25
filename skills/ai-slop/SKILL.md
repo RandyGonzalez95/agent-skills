@@ -1,13 +1,16 @@
 ---
 name: ai-slop
-description: Remove AI-style filler from prose, code names, comments, logs, and technical summaries. Use when asked to avoid AI slop, write like a teammate, simplify text, or maintain banned words and patterns. Preserve facts and local code conventions.
+description: Simplify and cut text by default in prose, comments, logs, and technical summaries. Remove filler from code names while preserving local conventions. Use for AI slop cleanup, plain-language rewrites, concise copy, and maintaining feedback and banned patterns.
 ---
 
 # AI Slop
 
+Default to simplifying and cutting text. Delete or summarize before rephrasing. Do not wait for a separate request for brevity. Add detail only when requested or needed to preserve essential meaning.
+
 Write like an engineer on the team. While this skill is active, apply its rules to generated names, code edits, comments, summaries, plans, reviews, commit messages, and documents. Filter output before emitting it, maintain the lists when the user adds entries, and rewrite existing text when asked. These instructions work independently of the model or tool in use.
 
 For plain-language rewrites, also read [references/plain-language.md](references/plain-language.md).
+Read [saved feedback](references/feedback.md) for preferences learned from corrections.
 
 ## Scope and exceptions
 
@@ -19,6 +22,8 @@ For plain-language rewrites, also read [references/plain-language.md](references
 ## Core rules
 
 - Keep summaries short. Say what changed, why, and what is left. Cut recap and process narration.
+- Remove help that repeats a heading, control, or status. Keep technical setup in docs or optional details. Preserve facts needed to act, including permissions, costs, and destructive effects.
+- When reporting a blocker, say whether the user needs to do anything.
 - Short does not mean dense. Use full sentences, explain unfamiliar terms, and name only the files and identifiers the point needs. Avoid arrow chains, symbol shorthand, and stacked parentheticals in prose.
 - Name things for their role in the local context. A reader familiar with the surrounding code should not need the name explained.
 - Use bullets for a list and prose for an argument. Do not bullet a single idea.
@@ -143,11 +148,11 @@ Apply these to new methods, variables, types, fields, and files, subject to loca
 When the user adds a banned word, phrase, naming token, or pattern:
 
 1. Edit the matching list in this skill, in alphabetical order, with a replacement or "cut". Update an existing entry instead of adding a duplicate.
-2. If the user identifies a maintained source copy, edit that copy and update its installed copy using the established installation workflow. Do not guess another checkout or change unrelated skill copies.
+2. Maintain this skill in `agent-skills/skills/ai-slop/`, then update its installed copy with the repository installer. Never save a correction only in an installed copy. Honor a different source if the user explicitly selects it.
 3. If the skill cannot be edited, retain the addition for the conversation and tell the user which file needs the change. Do not claim persistence without a successful write.
 4. Confirm the addition in one line and apply it immediately.
 
-For broader tone or structure feedback, add a short core rule that states when it applies and when it does not. Keep a one-off request local unless the user asks to make it a standing rule.
+For broader feedback, fix the current work and add a short lesson to references/feedback.md. Merge repeated lessons and keep project-specific choices scoped to that project. The user has requested ongoing learning from corrections; do not wait for another request to save them. Do not infer permission for unrelated edits or publishing.
 
 ## Check before emitting
 

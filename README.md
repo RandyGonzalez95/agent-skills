@@ -58,7 +58,7 @@ These are installation conveniences: Claude Code uses `~/.claude/skills`; Codex 
 
 | Skill | Purpose |
 |---|---|
-| [ai-slop](skills/ai-slop/SKILL.md) | Remove AI-style filler from prose, code names, comments, logs, and technical summaries. Simplify text and maintain banned words and patterns while preserving facts and local conventions. |
+| [ai-slop](skills/ai-slop/SKILL.md) | Simplify and cut text by default, remove filler from prose and code names, and retain user feedback. |
 | [automation](skills/automation/SKILL.md) | Plan, implement, and troubleshoot CRM and cross-app workflows, including GoHighLevel, with clear triggers, ownership, duplicate handling, and measurable outcomes. Use for automation builds and adoption plans rather than routine task or note edits. |
 | [brand](skills/brand/SKILL.md) | Define or review brand positioning, voice, messaging, visual identity, and asset guidelines. Use for reusable brand standards and consistency reviews rather than individual copy or graphic deliverables. |
 | [carousels](skills/carousels/SKILL.md) | Plan, write, design, import, upscale, or revise social media carousel sequences with consistent storytelling and accurate source assets. Use for social slides and covers, not website slider components. |

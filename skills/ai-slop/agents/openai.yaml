@@ -1,4 +1,4 @@
 interface:
   display_name: "AI Slop"
-  short_description: "Remove AI filler and write in plain language"
-  default_prompt: "Use $ai-slop to remove filler and rewrite this in plain language while preserving its facts and local conventions."
+  short_description: "Simplify and cut text by default"
+  default_prompt: "Use $ai-slop to simplify and cut this text, preserving essential meaning and local conventions."

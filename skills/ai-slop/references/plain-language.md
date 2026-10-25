@@ -16,18 +16,19 @@ Read the complete source before writing. If it is missing, inaccessible, truncat
 
 ## Styles
 
-- Plain, the default: preserve the same content while simplifying words and sentences.
+- Simplify and cut, the default: remove repetition, filler, and secondary detail. Preserve essential facts and what the reader needs to act.
+- Full detail: preserve all content while simplifying words and sentences, when requested.
 - TL;DR: target half the source length or less. Keep decisions, numbers, and paths. Drop repetition, hedges that do not affect certainty, and secondary detail. Leave out code blocks.
 - Other tones, including explain-like-I'm-five: use only when requested, with the same factual constraints.
 
-For plain rewrites, preserve every fact, name, number, link, file path, command, and identifier. For TL;DR, the requested omissions and code-block removal take precedence over full-content preservation. Preserve retained details exactly and never change a claim to meet the length target. If keeping the required details prevents halving the length, keep those details.
+Preserve retained facts, names, numbers, links, paths, commands, and identifiers exactly. Never alter a claim to meet a length target. Keep qualifications that affect certainty, required actions, permissions, costs, and destructive effects. Full-detail rewrites retain every fact; default rewrites and TL;DR may omit secondary detail.
 
 ## Preserve meaning and format
 
 - Use short, complete sentences and everyday words. Explain jargon briefly without adding facts, causes, or steps the source does not state.
 - Turn fragments, arrow chains, and parenthetical file lists into full sentences.
 - Leave fenced code blocks and YAML frontmatter unchanged, except that TL;DR omits code blocks.
-- Keep the Markdown structure: headings, lists, tables, and link targets. Heading text may change. A TL;DR may omit sections containing only details it is allowed to drop.
+- Keep useful Markdown structure and exact retained link targets. Remove sections that only repeat information or contain dispensable detail, unless full detail was requested.
 - Remove bold covering whole sentences, or narrow it to the relevant term.
 - Preserve the source's claims, including ones that look wrong. A rewrite is not a fact-check.
 - Keep the source language unless the user requests another. Translate prose only; keep code, identifiers, paths, and quoted output unchanged.
@@ -36,4 +37,4 @@ For plain rewrites, preserve every fact, name, number, link, file path, command,
 - Apply the main skill's writing rules. Remove eyebrow labels while preserving their facts in normal body text under the heading or before the item they explain.
 - Preservation takes precedence over word bans and punctuation preferences for exact strings, quotes, code, identifiers, links, paths, commands, and frontmatter.
 
-Before delivery, compare source and result for factual omissions, altered values, changed link targets, and new claims. For TL;DR, distinguish allowed omissions from changed facts. A short explanation of a term must not add a new claim about the source's situation.
+Before delivery, check for lost essential facts, altered values, broken links, and new claims. Distinguish allowed cuts from changed facts. Explanations must not invent context.
