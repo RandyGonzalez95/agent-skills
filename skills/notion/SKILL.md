@@ -1,25 +1,23 @@
 ---
 name: notion
-description: Maintain Notion knowledge catalogs, tool notes, work logs, and task documentation using live pages and schemas. Use for Notion records and source-grounded documentation, with external task boards read-only unless separately requested.
+description: Maintain Notion catalogs, notes, work logs, and task documentation using live pages and schemas.
 ---
 
 # Notion
 
-Discover the available Notion tools. Resolve the user's destination and fetch its current schema before writing; do not inherit database IDs, categories, or account assumptions. Preserve existing properties and page structure. Find an existing record before creating a duplicate.
+Discover available tools, resolve the destination, and read its current schema. Match existing records by source URL/ID or date before creating duplicates. Preserve unrelated properties and page structure; refresh changed schemas without automatically modifying them.
 
-## Choose the record
+## Record types
 
-- **Skill catalog:** Read name, description, and path from actual files. Distinguish a draft, repository copy, installed skill, and active workflow.
-- **Tool reference:** Record stated purpose, verified plan/configuration, source links, and useful operational notes. Do not invent account details.
-- **Work log:** Use reported accomplishments and retrieved evidence. Reuse the relevant daily/weekly entry. Distinguish completed work from plans; use the user's timezone and requested period.
-- **Task documentation:** Read the task description, fields, relevant comments/replies, attachments, and linked documents. Important requirements may exist only in updates. Do not dismiss a long mixed-topic comment without checking for relevant instructions.
+- Skill catalogs: read actual names, descriptions, and paths. Distinguish drafts, repository copies, installed skills, and active workflows.
+- Tool notes: record purpose, verified plan/configuration, sources, and operational guidance.
+- Work logs: reuse the relevant period's entry, use the user's timezone, and distinguish evidence-backed accomplishments from plans.
+- Task documentation: inspect descriptions, fields, relevant comments/replies, attachments, and linked sources, including mixed-topic updates.
 
-For task documentation, separate the task summary, source-document summary, actionable completion steps, open questions, and provenance. Attempt to read the actual linked source; if unavailable, identify the failure and any secondary pasted material used. Never imply an unread source was inspected.
+For task documentation, separate task/source summaries, completion steps, questions, and provenance. Attempt the actual linked source; disclose inaccessible sources and secondary material used.
 
 ## Write and verify
 
-Use a stable source URL/ID or date to match existing records. Make targeted edits and preserve unrelated content. Mark imported task status and priority as a timestamped snapshot, not live synchronization. Schema drift calls for a fresh read, not automatic schema changes.
+Make targeted edits. Label imported status/priority as a dated snapshot, not live synchronization. Documentation does not update the source board or complete its task; those require corresponding authorization.
 
-Documentation alone does not change the source task board. If a board update is also explicitly requested, treat it as a separate authorized operation using the appropriate tool; do not let writing a log imply completion of the task itself.
-
-Read back the changed page and report its link with a concise description. If the destination is inaccessible, deliver a clearly labeled local draft. Do not claim it has been saved to Notion.
+Read back the page and return its link. If inaccessible, provide a clearly labeled local draft without claiming it was saved to Notion.

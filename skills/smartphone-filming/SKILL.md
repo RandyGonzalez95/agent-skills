@@ -1,27 +1,22 @@
 ---
 name: smartphone-filming
-description: Recommend practical phone-camera settings, shoot preparation, and troubleshooting for focus, stabilization, flicker, HDR, and simulated depth effects. Use for real filming rather than AI video generation or scriptwriting.
+description: Choose phone-camera settings and troubleshoot focus, stabilization, flicker, HDR, and depth effects.
 ---
 
 # Smartphone Filming
 
-Use the actual phone/app, scene lighting, motion, framing, editing workflow, and delivery constraints. Ask about the device only when it changes the advice. Verify manufacturer documentation before giving device-specific menu paths, limits, or feature support.
+Use the actual device/app, light, motion, framing, editing, and delivery constraints. Ask for the device only when relevant; verify manufacturer guidance for specific menus and capabilities.
 
-## Starter setup
+## Setup and adjustments
 
-For ordinary business/social footage, standard video at 4K/30 fps is a useful starting point when supported. Use 1080p when storage or delivery constraints favor it. Choose SDR for a simple SDR editing workflow, or preserve an intentional HDR workflow. None of these is a universal best setting.
+For ordinary social/business video, supported 4K/30 fps is a starting point; use 1080p for storage/delivery limits. Match SDR or HDR to the intended editing pipeline.
 
-Clean the lens, stabilize the phone, frame for the actual output, and record a short test. Review focus, exposure, flicker, shake, and sound before the full take.
+Clean the lens, stabilize, frame for delivery, and test focus, exposure, flicker, shake, and sound before recording.
 
-## Adjust for the scene
+- Cinematic motion also depends on light and shutter; slow pans can reduce distracting motion.
+- For artificial-light flicker, test 25 fps and 1/50 or 1/100 shutter in 50 Hz regions; 30 fps and 1/60 or 1/120 in 60 Hz regions. LEDs/screens may need other settings or lighting.
+- Stabilization crops framing; leave margin. Verify mode-specific resolution limits. In dim stationary scenes, try stable support and more light before action modes.
+- Washed-out HDR exports warrant checking color management and HDR-to-SDR conversion before reshooting.
+- Simulated depth needs edge/focus review. Its f-number may control computation, not physical aperture; retain originals and depth metadata for later refocusing.
 
-- Frame rate alone does not create a cinematic look. Lighting, motion, and shutter speed also matter; slow pans help avoid distracting motion.
-- Under artificial light, test 25 fps in a 50 Hz region or 30 fps in a 60 Hz region, based on the filming location. If manual shutter is available, test 1/50 or 1/100 for 50 Hz, or 1/60 or 1/120 for 60 Hz. LEDs/screens may require other settings or different lighting; these are tests, not guarantees.
-- Stabilization can crop the image. Allow framing margin. Strong action stabilization generally needs enough light; confirm device-specific capture limits rather than promising maximum resolution in every mode.
-- In dim stationary scenes, try standard video, stable support, and more light before specialized action modes.
-- If HDR clips look washed out after export, inspect color management and HDR-to-SDR conversion before suggesting a reshoot.
-- Simulated shallow-depth modes need edge/focus review. Their f-number controls a computational effect, not necessarily a physical aperture. Preserve originals and supported depth metadata if later refocusing is required.
-
-## Deliver
-
-Give the relevant setup, a short reason, and a confirmation test. For troubleshooting, change the most likely cause first and compare the test clip. Do not dump every setting into every answer or assume one manufacturer's controls exist on another phone.
+Give only relevant settings, a brief reason, and a confirmation test. For troubleshooting, change the likely cause first and compare clips.

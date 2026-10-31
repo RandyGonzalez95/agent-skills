@@ -1,32 +1,28 @@
 ---
 name: workflow-mapping
-description: Model editable business workflows, customer journeys, sitemaps, and adjacent page or message frameworks. Use for diagrams and implementation handoffs in Figma, FigJam, or the user's chosen format, not live automation execution.
+description: Create editable workflow maps, customer journeys, sitemaps, and implementation handoffs.
 ---
 
 # Workflow Mapping
 
-Identify the objective, audience, boundaries, source evidence, and intended artifact. Distinguish a workflow map, wireframe, and finished interface. Identify the editing destination separately from any reference-only document.
+Establish objective, audience, boundaries, evidence, and output. Distinguish maps, wireframes, and finished interfaces; identify the editing destination separately from reference documents.
 
-## Model before drawing
+## Model
 
-Give nodes stable labels. Record relevant actors, entry conditions, actions, decisions, next steps, and exits. Label branches explicitly; distinguish sequential steps from alternatives and confirmed requirements from proposals.
+Give nodes stable labels and record actors, entry conditions, actions, decisions, branches, and exits. Distinguish sequence from alternatives and requirements from proposals.
 
-- For a website: connect positioning, sitemap, visitor journeys, page frameworks, and delivery requirements. Record route, audience need, purpose, evidence, main action, and destination.
-- For operations: connect trigger, eligibility, actions, delays/decisions, exits, failure handling, ownership, and re-entry. Include suppression before messages where relevant.
-- For implementation: connect each conceptual step to the intended system, dependencies, and evidence required to verify it.
+- Websites: connect positioning, sitemap, journeys, and page frameworks; record route, need, purpose, evidence, action, and destination.
+- Operations: connect triggers, eligibility, actions, delays, decisions, exits, failures, ownership, re-entry, and relevant message suppressions.
+- Handoffs: map steps to systems, dependencies, and verification evidence.
 
-Do not invent events, timing, consent states, product behavior, or commercial approval.
+Do not invent events, timing, consent, product behavior, or approvals.
 
-## Compose
+## Draw and verify
 
-Use an overview, legend, clear reading direction, and labeled groups. Place supporting page/message frameworks near the logic they implement. Keep technical notes and open decisions visually distinct. Color should supplement labels.
+Use a clear reading direction, labeled groups, and a useful overview/legend. Place page/message frameworks near their logic. Distinguish technical notes and open decisions; supplement color with labels.
 
-Use native editable text, shapes, and connectors where the selected format supports them. In Figma/FigJam, load the current vendor tool guidance before writing, including file creation or diagram prerequisites. Use the appropriate editor and verify supported APIs; do not embed a stale API manual.
+Use native editable text, shapes, and connectors. Load current vendor guidance and required prerequisites for Figma/FigJam operations. Let containers grow with text and recheck connector endpoints after layout changes.
 
-Use containers that grow with text and verify connector endpoints after layout changes. A fit-to-page overview is insufficient to judge text legibility.
+Inspect both overview and detailed views for legibility, overflow, unlabeled branches, unreachable nodes, missing exits, and false connections. Confirm editability; deliver the file/link, reading order, and unresolved decisions.
 
-## Verify and deliver
-
-Inspect overview and detailed sections for overflow, unlabeled branches, unreachable nodes, missing exits, and false connections. Confirm editability. Deliver the file/link and reading order with unresolved decisions.
-
-If the requested destination is unavailable, provide the local specification and identify the incomplete destination work. A diagram is not an implemented workflow; do not describe it as running.
+If the destination is unavailable, provide the local specification and name the incomplete work. A diagram does not establish a running automation.

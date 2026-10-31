@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: Define and maintain design tokens, themes, component specifications, states, and design-to-code mappings. Use for systematic UI foundations rather than slide production or brand positioning.
+description: Create and maintain UI tokens, themes, component contracts, and design-to-code mappings.
 license: MIT
 metadata:
   author: claudekit
@@ -9,22 +9,18 @@ metadata:
 
 # Design System
 
-Inspect the current brand guide, token format, component library, frameworks, and consumers before changing them. Preserve existing contracts where practical; do not create a parallel system merely to use a preferred format.
+Inspect the brand guide, token pipeline, component library, frameworks, and consumers. Extend existing contracts instead of creating a parallel system.
 
-## Token architecture
+## Define
 
-Use primitive values, semantic roles, and component-specific aliases where those layers solve actual reuse needs. For example, a raw blue value may feed an action-background role, which supplies a button background. Avoid adding layers with no consumers.
+Use primitive, semantic, and component layers only where reuse warrants them. Define typography, spacing, surfaces, text, borders, focus, and motion by purpose, with explicit units and naming. Preserve theme aliases rather than flattening them.
 
-Define typography, spacing, surfaces, text, borders, focus, and motion by purpose. Describe units and naming conventions. Preserve theme-specific role mappings rather than flattening aliases into values that cannot change with the theme.
+Specify component anatomy, variants, sizes, accessibility, responsive behavior, content limits, and relevant interaction states. Explain unavailable actions rather than relying on disabled styling alone.
 
-## Component contract
+Map actual design/code names, token references, ownership, and gaps. A design component does not establish an implemented code component.
 
-Specify anatomy, variants, supported sizes, interaction states, accessibility semantics, responsive behavior, and content limits. Include default, hover, focus, active, disabled, loading, error, and empty states only where relevant. Disabled is not a substitute for explaining unavailable actions.
+## Verify and deliver
 
-For design-to-code handoff, map actual component and token names, ownership, and unresolved gaps. A design-library component does not prove the corresponding code implementation exists.
+Use the existing pipeline and current framework documentation. Edit generated files through their source. Check missing/circular aliases, units, contrast on actual surfaces, theme switching, and representative states.
 
-## Implementation and verification
-
-Use the project's existing token pipeline and current framework documentation. Check missing/circular aliases, unit consistency, contrast on actual surfaces, theme switching, and representative component states. Preserve user edits in generated files by changing their real source.
-
-Deliver the changed tokens/specifications, consumer examples when useful, and the checks performed. Keep slide layouts and deck narratives in presentation-design; brand identity decisions belong in brand. No external skill is required for ordinary token work.
+Deliver changed tokens/specifications, useful consumer examples, and verification results. Keep brand positioning and presentation layouts in their respective workflows.

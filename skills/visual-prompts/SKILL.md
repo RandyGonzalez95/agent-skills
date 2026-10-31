@@ -1,30 +1,28 @@
 ---
 name: visual-prompts
-description: Develop and critique image, video, and caption-editing prompts using a visual brief, reference roles, and tool-aware settings. Use for prompt writing and art direction rather than automatically generating finished media.
+description: Write and critique image, video, editing, and caption prompts with clear reference roles and tool settings.
 ---
 
 # Visual Prompts
 
-Identify the viewer outcome, hero subject, medium, reference assets, allowed changes, and target tool. Ask a consequential design question only when it resolves a material gap. Honor complete briefs and requests to proceed with assumptions.
+Establish outcome, subject, medium, references, allowed changes, and target tool. Honor complete briefs and authorized assumptions.
 
-## Define the brief
-
-Record deliverable, audience/use, composition, light, palette/material, action/timing, exact copy/audio, invariants, and success criteria. Assign each reference a role such as identity, geometry, style, layout, motion, or audio; do not treat all references as interchangeable.
+Record composition, light, palette/material, timing, exact copy/audio, invariants, and success criteria. Assign each reference its role: identity, geometry, style, layout, motion, or audio.
 
 ## Compile
 
-- **Image:** Lead with subject, spatial relationships, framing, light, materials, and necessary exclusions. Prefer observable visual cues over piles of camera jargon or quality adjectives.
-- **Edit:** State what changes, what stays, and which reference controls each. Exact logos, text, measurements, or source pixels may require compositing rather than generative redraw.
-- **Video:** Describe a beginning, change, and end. Distinguish subject motion from camera motion. For multiple shots, provide independent prompts and a contiguous timeline whose durations sum to the requested runtime. Generation duration and final trim length are different.
-- **Continuity:** Keep a compact invariant identity/product block with scene-specific changes. References and seeds support consistency but do not guarantee it. Prefer continuous source action or compatible end/start references where supported.
-- **Captions:** Produce a cue/editing plan, not a video-generation prompt. Preserve transcript meaning, numbers, negations, and qualifications. Obtain actual timing. Text behind a subject needs a synchronized mask; otherwise use negative space.
+- Images: specify subject, spatial relationships, framing, light, materials, and necessary exclusions using observable cues.
+- Edits: state changes, preserved elements, and controlling references. Exact logos, text, measurements, or pixels may require compositing.
+- Video: specify beginning, change, and end; separate subject/camera motion. Give independent shot prompts and a contiguous timeline totaling the requested runtime. Distinguish generation duration from final trim.
+- Continuity: retain a compact identity/product block. Seeds/references assist but do not guarantee consistency; use compatible source action or end/start references where supported.
+- Captions: give an editing plan with actual timing. Preserve meaning, numbers, negations, and qualifications. Behind-subject text needs synchronized masks; otherwise use negative space.
 
-Separate prompt text, tool settings, and assembly instructions. Verify the receiving interface's current schema before asserting supported inputs, durations, resolutions, reference syntax, or seed controls. Use a portable prompt and identify unchecked settings when verification is unavailable.
+Separate prompt, settings, and assembly instructions. Verify current interface support for inputs, duration, resolution, reference syntax, and seeds; label unchecked settings.
 
-## Review and iterate
+## Review
 
-Check hierarchy, spatial/timing precision, coherent light and focus, reference compatibility, feasible settings, and protected exact copy. Explain the most consequential choices briefly. An unrendered prompt is a proposal, not a proven output.
+Check hierarchy, spatial/timing precision, light/focus, reference compatibility, feasibility, and exact copy. An unrendered prompt is unverified.
 
-When results are supplied, compare against the brief and change the smallest relevant instruction or setting. Keep a record of prompt, settings, sources, observed mismatch, and revision. If repeated failures persist, change the workflow rather than stacking adjectives.
+Compare supplied results against the brief and change the smallest relevant instruction/setting. Record prompt, sources, settings, mismatch, and revision. Repeated failures may need a different workflow. Distinguish editorial comparisons from measured results.
 
-For prompt comparisons, evaluate precision, reference control, feasibility, adaptability, and clarity of guidance. Keep editorial judgments separate from measured generation results. Read [effect recipes](references/effect-recipes.md) only when an optical, material, montage, or caption technique fits the brief.
+Read [effect recipes](references/effect-recipes.md) only for techniques relevant to the brief.

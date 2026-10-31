@@ -1,39 +1,30 @@
 ---
 name: carousels
-description: Plan, write, design, import, upscale, or revise social media carousel sequences with consistent storytelling and accurate source assets. Use for social slides and covers, not website slider components.
+description: Write, design, import, or revise social carousel slides and covers with consistent storytelling and source fidelity.
 ---
 
 # Carousels
 
-Identify the audience, purpose, message, source evidence, dimensions, and requested output. A writing-only request needs copy, not generated graphics. A cover concept is not a completed carousel.
+Establish audience, message, evidence, dimensions, and output. Match scope: copy-only requests need copy; a cover is not a complete carousel.
 
-## Choose the operation
+## Plan
 
-- Import: retrieve the actual files, preserve originals and ordering, and label recovered versions accurately.
-- Upscale: prefer higher-resolution export from editable source. Generative redesign is not faithful recovery of missing detail.
-- Redesign: retain approved narrative and copy unless changes are requested.
-- Create: choose enough slides to deliver one premise. If dimensions are unspecified, propose 1080 by 1350 as a working portrait format, not a universal platform requirement.
+For imports, preserve originals and order. For upscaling, prefer higher-resolution source exports; generative redesign cannot recover exact missing detail. For redesigns, retain approved copy and narrative unless changes are requested. For new work, use enough slides for one premise; 1080 by 1350 is an optional portrait starting point.
 
-## Story and copy
+Storyboard each slide's purpose, exact copy, asset, and composition. Make the cover's promise specific, start delivering on slide two, and add useful information on each slide. End with one relevant action and a real destination. Captions add context.
 
-Build a storyboard with slide purpose, exact copy, source asset, and composition. The cover promises a specific payoff; the second slide starts delivering it. Each following slide adds evidence, an explanation, or a useful decision. End with one relevant action, using a real destination or resource.
+Inspect the source video/transcript for companion carousels. Use real lessons and evidence; do not invent specifications, testimonials, urgency, savings, demand, ROI, or keyword fulfillment.
 
-Useful structures include a product reveal, demonstration companion, practical answer, or real-work lesson. Pair a build with what was learned or changed. Do not confuse a demo with demand or ROI. For a companion to a video, inspect the actual video or transcript and add information rather than mechanically transcribing it.
+## Produce
 
-Keep one compact thought per slide. The caption adds context; it need not repeat every slide. Do not invent testimonials, urgency, savings, product specifications, or automated keyword fulfillment.
+Use the current brand and selected references. Keep typography, margins, palette, logos, and numbering consistent while varying composition purposefully.
 
-## Visual production
+Inspect assets. Preserve exact logos, product photos, and final text as separate layers where fidelity matters; generate supporting backgrounds separately. Do not fabricate product angles, geometry, or hardware. Text behind a subject needs an alpha mask checked for halos.
 
-Use the current brand guide and user-selected references. Establish consistent typography, margins, palette, logo treatment, and numbering; vary composition where it helps the story. Avoid inheriting previous brands' fonts, colors, rejected effects, or asset folders.
-
-Inspect source images. Keep authentic logos, exact product photographs, and final text as separate layers when fidelity matters. Generate supporting backgrounds separately. Preserve product geometry and identity; do not fabricate missing angles or hardware. Use a real alpha mask for text behind a subject and inspect edges for halos.
-
-Use available tools and current schemas. Do not assume a specific image provider or paid plan. Preserve the selected provider and budget. Track generation job IDs and inspect outcomes before retrying uncertain jobs.
-
-For animation, preserve legibility and source fidelity throughout the sequence and deliver actual video exports when requested. A CSS preview is not an exported video.
+Honor provider and budget choices, verify tool schemas, and inspect job results before retrying uncertain generations. Deliver actual video exports for animation requests.
 
 ## Verify and deliver
 
-Inspect every slide at full resolution and phone size, then review the ordered sequence. Check copy, contrast, crop, brand assets, product details, masks, and continuity. Shorten copy before shrinking it beyond comfortable reading.
+Inspect every slide at full resolution and phone size, then the ordered sequence. Check text, contrast, crop, fidelity, masks, and continuity; shorten copy before shrinking type.
 
-Deliver the requested ordered images or copy, a preview, editable source when produced, caption and alt text when useful, and a compact asset/source manifest. Distinguish imported, redesigned, draft, and approved states. For performance analysis, read [measurement](references/measurement.md).
+Deliver ordered files or copy, preview, editable source when produced, useful captions/alt text, and a compact source manifest. Label imported, redesigned, draft, and approved states. For performance analysis, read [measurement](references/measurement.md).

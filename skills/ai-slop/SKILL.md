@@ -1,165 +1,37 @@
 ---
 name: ai-slop
-description: Simplify and cut text by default in prose, comments, logs, and technical summaries. Remove filler from code names while preserving local conventions. Use for AI slop cleanup, plain-language rewrites, concise copy, and maintaining feedback and banned patterns.
+description: Cut filler from prose and code names; apply saved writing preferences and maintain banned wording.
 ---
 
 # AI Slop
 
-Default to simplifying and cutting text. Delete or summarize before rephrasing. Do not wait for a separate request for brevity. Add detail only when requested or needed to preserve essential meaning.
+Simplify and cut by default. Delete repetition before rephrasing; add detail only when needed for meaning or requested. Apply this guidance to prose, names, comments, logs, and technical summaries.
 
-Write like an engineer on the team. While this skill is active, apply its rules to generated names, code edits, comments, summaries, plans, reviews, commit messages, and documents. Filter output before emitting it, maintain the lists when the user adds entries, and rewrite existing text when asked. These instructions work independently of the model or tool in use.
+Read [saved feedback](references/feedback.md) and [banned wording](references/banned-wording.md). For rewrites, also read [plain-language rewrites](references/plain-language.md).
 
-For plain-language rewrites, also read [references/plain-language.md](references/plain-language.md).
-Read [saved feedback](references/feedback.md) for preferences learned from corrections.
+## Preserve meaning
 
-## Scope and exceptions
+Apply bans to generated text and new names. Preserve exact quotes, user content, existing symbols, API names, required attribution, and local conventions unless editing them is requested. Technical accuracy and explicit user requirements override style defaults.
 
-- Apply the bans to generated text and new names. Preserve quoted tickets, existing code, third-party API names, and user-written content unless the user requests an edit. Do not rename existing symbols merely to satisfy a word ban.
-- Use a banned word when it is the only accurate technical term. Accuracy takes priority over the filter.
-- Match explicit user requirements and consistent local conventions over these defaults.
-- Keep repository-required trailers, such as a Co-authored-by line, and tooling-required attribution.
+## Write plainly
 
-## Core rules
+- Lead with the point. Cut process narration, repeated summaries, filler, unnecessary hedges, and closing pleasantries. Preserve qualifications affecting certainty.
+- Use complete sentences and familiar verbs. Explain unfamiliar terms; avoid identifier lists, arrow chains, and stacked parentheticals.
+- Use bullets for lists and prose for arguments. Vary sentence length without decorative structure or three-adjective rhythms.
+- Remove help that repeats controls or status. Keep setup details in documentation; retain permissions, costs, and destructive effects needed to act. Explain whether a blocker needs user action.
+- Omit emoji, decorative headers, whole-sentence bold, contrast formulas, and labels above titles. Move useful small subtitles or footnotes around titles, charts, and tables into normal body text. Preserve data labels, legends, navigation, and required attribution.
+- Use ASCII punctuation without invisible markers or stylistic signatures. This does not restrict letters in other languages. Do not claim these edits prove human authorship or evade detection.
 
-- Keep summaries short. Say what changed, why, and what is left. Cut recap and process narration.
-- Remove help that repeats a heading, control, or status. Keep technical setup in docs or optional details. Preserve facts needed to act, including permissions, costs, and destructive effects.
-- When reporting a blocker, say whether the user needs to do anything.
-- Short does not mean dense. Use full sentences, explain unfamiliar terms, and name only the files and identifiers the point needs. Avoid arrow chains, symbol shorthand, and stacked parentheticals in prose.
-- Name things for their role in the local context. A reader familiar with the surrounding code should not need the name explained.
-- Use bullets for a list and prose for an argument. Do not bullet a single idea.
-- Prefer plain verbs: use, fix, check. Cut padding, unnecessary hedges, throat-clearing, and closing pleasantries. Preserve qualifications that affect meaning or certainty.
-- Comment only what the code cannot show.
-- Use no emoji, decorative headers, whole-sentence bold, or "In conclusion" endings.
-- Do not add eyebrow text: short labels above titles or headings, often small, uppercase, and letter-spaced. This also covers small muted subtitles, captions, and footers under titles, charts, or tables. Move useful information into normal body text before the thing it explains. Put a needed ticket ID, date, or step number in the heading or a normal body-text line under it. Keep data-bearing axis labels, table headers, legends, and navigation links.
-- Avoid three-adjective rhythms unless each item carries information.
-- Avoid "not just X, but Y" and "it's not X, it's Y" constructions.
-- Use plain ASCII punctuation: commas, periods, and colons instead of em dashes as connectors. Do not introduce curly quotes, ellipsis characters, en or em dashes, or zero-width characters. This is a punctuation rule, not a ban on letters in other languages.
-- Vary sentence length naturally.
+## Names, comments, and logs
 
-## No text watermarking
+Match local casing, vocabulary, prefixes, and established abbreviations. Name the actual responsibility with enough context to avoid ambiguity. Generic role words such as Manager or Handler are fine when accurate or conventional. Prefer local predicate, Try/TryGet, callback, and event patterns.
 
-Do not insert AI-identifying markers or stylistic signatures into artifacts. Avoid invisible characters, Unicode punctuation swaps, repeated em-dash rhythms, unnecessary "generated by" phrasing, boilerplate closing lines, and fixed section structures repeated across unrelated documents. Preserve required attribution as described above. Do not claim that these edits prove human authorship or evade detection.
+Comment only on constraints the code cannot explain, such as ordering or platform quirks. Omit task narration and change-log prose. Write traceable diagnostic logs with appropriate severity; preserve structured/deferred logging and prefer interpolation when compatible.
 
-## Names
+## Maintain and check
 
-- Match nearby casing, prefixes, vocabulary, domain terms, and established abbreviations such as id or cfg.
-- Keep names short enough for their scope without introducing ambiguity.
-- Manager, Helper, Utils, Service, Handler, Wrapper, and Processor are appropriate when they describe the actual role or local convention. Otherwise name the responsibility.
-- Avoid filler adjectives and vague verbs; use the lists below.
-- For predicates and booleans, prefer Is, Has, Can, or Should. Use Try/TryGet for operations following that convention instead of a generic Check or Validate name. Match local casing and conventions.
-- For events, callbacks, and registration members, use the local pattern, such as ...Handler, ...Callback, On..., or Register....
-- Follow a file's different but consistent convention over these defaults.
+For new banned wording, update the matching alphabetical list with a replacement or "cut"; merge duplicates. For broader corrections, fix the current work and save a brief, properly scoped lesson in [feedback](references/feedback.md). Ongoing learning is requested.
 
-## Comments and logs
+Maintain the source in `agent-skills/skills/ai-slop/`, then use its installer to update the installed copy unless the user defers installation or selects another source. If writing fails, apply the correction in conversation and identify the unsaved file. Confirm successful additions briefly.
 
-Default to no comment. Do not narrate the current task, ticket, fix, or "new" behavior in source comments. Avoid change-log prose such as "Added handling for...". Comment on non-obvious constraints: ordering requirements, platform quirks, or why the obvious approach fails. Keep necessary comments short, direct, and imperative where appropriate.
-
-Write logs as terse diagnostic statements. Name the operation or component so each line is traceable. Match severity to the condition. Prefer interpolation over concatenation when compatible with the logging API; preserve structured or deferred logging conventions.
-
-## Banned words and phrases
-
-Use the replacement, or remove the phrase when the replacement is "cut". Scope exceptions still apply. The entries here are quoted vocabulary to maintain, not examples of acceptable output.
-
-- a testament to: cut
-- boasts: has
-- comprehensive: full, or name what is covered
-- crucial: important, or cut
-- cutting-edge: cut
-- delve: look at, dig into
-- dive deep: look at
-- elevate: improve, or name the change
-- embark: start
-- empower: let, enable
-- ensure (as filler): make sure, or cut
-- furthermore: also, or cut
-- game-changing: cut
-- harness (verb): use
-- holistic: cut
-- host: parent, container, or the actual role; allowed for networking concepts
-- in essence: cut
-- in today's fast-paced world: cut
-- intricate: complex, or name the complexity
-- it is important to note that: cut
-- journey: cut
-- leverage (verb): use
-- meticulous: careful, or cut
-- moreover: also, or cut
-- myriad: many
-- navigate the complexities of: cut
-- paradigm: approach, model
-- pivotal: key, or cut
-- plethora: many
-- realm: area, system
-- robust: name the property, such as tested, retried, or bounds-checked
-- revolutionize: cut
-- seamless / seamlessly: cut, or say what no longer breaks
-- showcase: show
-- streamline: simplify
-- supercharge: cut
-- synergy: cut
-- tapestry: cut
-- underscores: shows
-- unleash: cut
-- unlock: cut, or say what becomes possible
-- utilize: use
-- vital: important, or cut
-- warm (as in "warm the cache" or "warm the button"): name the operation and target, such as preload the settings panel
-- worth noting / worth knowing: cut
-
-## Banned naming tokens
-
-Apply these to new methods, variables, types, fields, and files, subject to local conventions and technical accuracy.
-
-- Advanced: cut
-- Comprehensive: cut
-- DoWork / HandleStuff / ProcessData / PerformOperation / ExecuteLogic: name the actual operation
-- Enhanced: cut
-- Host: name the actual role, such as SettingsPanelOffScreenParent; allowed for networking concepts
-- Improved: cut
-- Manager / Helper / Utils / Service / Handler / Wrapper / Processor: use only for the actual role or local convention
-- New prefix: name the behavior, or replace in place
-- Robust: cut
-- Smart: cut
-- Ultimate: cut
-- Unified: cut
-- V2: name the behavior, or replace in place
-- Warm: name the operation and target, such as PreloadSettingsPanel
-
-## Banned patterns
-
-- Bold applied to whole sentences: emphasize only the relevant term, or cut
-- Closers such as "Let me know if you'd like me to..." and "I hope this helps": cut
-- Dense shorthand, identifier-packed fragments, parenthetical file lists, and arrow chains: use complete sentences
-- Eager openers such as "Great question", "Certainly!", "Absolutely!", and "Happy to help": start with the answer
-- Em dash as the default connector: use a comma, period, or colon
-- Emoji in headers, bullets, or code: cut
-- Eyebrow text and small muted text under titles, charts, or tables: move needed facts into normal body text
-- Insider metaphors such as "load-bearing", "seam", "rough edges", and "already sprung": say what depends on what or what is broken
-- Non-ASCII punctuation and zero-width characters: use plain ASCII punctuation
-- "not just X, but Y" and "it's not X, it's Y": state the point directly
-- Restating a change or code in a comment: cut
-- Rule-of-three adjective lists without added information: keep only informative items
-- Self-reference such as "As an AI" and "As a language model": cut unnecessary preambles; answer identity questions accurately when asked
-- Signpost openers such as "Here's a breakdown", "Let's break it down", and "Key takeaways": start with the content
-- Summary sections that repeat the body: cut
-
-## Maintain the rules
-
-When the user adds a banned word, phrase, naming token, or pattern:
-
-1. Edit the matching list in this skill, in alphabetical order, with a replacement or "cut". Update an existing entry instead of adding a duplicate.
-2. Maintain this skill in `agent-skills/skills/ai-slop/`, then update its installed copy with the repository installer. Never save a correction only in an installed copy. Honor a different source if the user explicitly selects it.
-3. If the skill cannot be edited, retain the addition for the conversation and tell the user which file needs the change. Do not claim persistence without a successful write.
-4. Confirm the addition in one line and apply it immediately.
-
-For broader feedback, fix the current work and add a short lesson to references/feedback.md. Merge repeated lessons and keep project-specific choices scoped to that project. The user has requested ongoing learning from corrections; do not wait for another request to save them. Do not infer permission for unrelated edits or publishing.
-
-## Check before emitting
-
-- Scan generated text against the banned lists and new names against the naming rules.
-- Delete sentences that only announce the next sentence, comments that restate code, and repeated summaries.
-- Check that punctuation is plain ASCII, subject to preservation exceptions.
-- Read the densest paragraph as a teammate new to the code would. Replace fragments and identifier lists with clear sentences.
-- Check documents, pages, and slides for eyebrow labels and small muted text around titles, charts, and tables.
-- Keep the result no longer than its purpose requires.
-- For rewrites, compare against the source using the preservation and style rules in the rewrite reference.
+Before delivery, scan wording and names, remove repetition, check punctuation and decorative labels, and read dense paragraphs for clarity. For rewrites, compare against the source for lost facts or changed meaning.

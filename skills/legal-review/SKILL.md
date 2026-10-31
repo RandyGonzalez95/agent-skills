@@ -1,39 +1,35 @@
 ---
 name: legal-review
-description: Review website, offer, subscription, testimonial, privacy, and AI-experience risks using evidence and applicable jurisdictions. Use for legal-risk spotting and launch readiness, with legal conclusions reserved for qualified counsel.
+description: Review website and launch risks involving privacy, claims, subscriptions, and AI against applicable law.
 ---
 
 # Legal Review
 
-Identify the operating entity, property, offer, audience, jurisdictions, scope, systems, and relevant data types. Unknown jurisdiction or backend behavior stays unknown. This workflow produces risk findings and verification tasks, not a compliance guarantee.
+Identify the entity, property, offer, audience, jurisdictions, systems, and data types. Keep unknown jurisdiction or backend behavior explicit. Produce risk findings and verification tasks, not compliance guarantees.
 
-## Evidence
+## Evidence and scope
 
-Inspect live behavior and first-party documents, operator configuration evidence, and current authoritative legal sources. Verify applicable statutes, regulations, decisions, and regulator guidance with dates; secondary commentary is a lead to check. Do not reuse historic penalty figures or treat a proposed or superseded rule as current law.
+Inspect live behavior, first-party documents, operator evidence, and current authoritative legal sources. Check effective dates; distinguish proposals and superseded rules. For legal claims cite authority, URL, publication/effective date, and access date.
 
-For each finding record checkpoint, status, confidence, evidence, jurisdiction, owner, and next action. Use pass, gap, partial, not applicable with a reason, or cannot verify. Confidence concerns the observation, not an invented probability of litigation.
+For each finding record checkpoint, status, confidence, evidence, jurisdiction, owner, and action. Use pass, gap, partial, justified not-applicable, or cannot-verify. Confidence describes evidence, not litigation probability.
 
-## Review areas
+For full audits cover the following; explain exclusions. Scoped requests need only relevant areas:
 
-For a full audit, assess each area and explain exclusions. For a scoped request, focus on the relevant areas.
+- Privacy notice accessibility, entity/contact/date, and consistency with collection, purposes, retention, and rights.
+- AI disclosure, profiling, provider access, accountability, and consequential decisions under applicable requirements.
+- Processor/data flows, storage permissions, sharing, secrets, and backend evidence unavailable from public pages.
+- Deletion across systems, uploads, logs, processors, backups, and legal holds.
+- Testimonials, identity/likeness permission, accuracy, and connection/results disclosures.
+- Subscription price/frequency, consent, cancellation instructions and actual flow.
+- Trials, promotions, renewal/refund terms, reminders, and required notices.
+- Relevant high-risk AI interactions, escalation, and human routing.
+- User-content ownership, licenses, reuse, confidentiality, portfolio rights, takedown, and termination.
+- Consistent entity, governing law, venue, offers, prices, and policies across contracts, checkout, and operations.
 
-1. Privacy notice presence, accessibility, entity, contact details, and effective date.
-2. Actual data collection, purposes, retention, and applicable rights compared with stated practices.
-3. AI interactions, profiling, data use, provider access, accountability, and consequential decisions; determine the actual disclosure requirement instead of assuming a universal rule.
-4. Processors and data flows, including CRM, payments, messaging, analytics, hosting, storage, and AI providers.
-5. Deletion behavior across active systems, uploads, logs, processors, backups, and legal holds.
-6. Storage access, sharing, least privilege, and secret handling; identify backend checks that cannot be performed from public pages.
-7. Genuine testimonials, permission for identity/likeness, accurate presentation, and applicable connection/results disclosures.
-8. Subscription disclosures, affirmative consent evidence, recurring price/frequency, cancellation instructions, and the real cancellation flow.
-9. Trial conversion, promotions, renewals, reminders, refund terms, and required notices under applicable law.
-10. AI escalation and foreseeable high-risk interactions where relevant to the product, including crisis handling and human routing; do not infer universal obligations or penalties.
-11. User-content ownership, licenses, reuse, confidentiality, portfolio rights, takedown, and termination; flag grants broader than service needs.
-12. Entity, governing law, venue, contact information, offers, prices, and policy consistency across contracts, checkout, and operations.
+## Handoff
 
-## Ownership and handoff
+Use authorized test accounts or supplied evidence; a review alone does not authorize purchases, customer contact, or production deletion.
 
-Assign commercial claims and customer journeys to the business owner, system behavior and logs to the technical owner, and applicable-law interpretation or legal language to qualified counsel. Distinguish a service provider's implementation duties from the client's policy and approval responsibilities.
+Assign claims/journeys to the business owner, behavior/logs to technical owners, and legal interpretation/language to qualified counsel. Distinguish provider implementation duties from client decisions. Label requested legal drafts for counsel review.
 
-Use authorized test accounts or evidence supplied by the operator. A review request does not authorize real purchases, customer contact, or deletion of production data. If legal drafting is requested, label the text as a working draft for counsel review.
-
-Report the operational launch posture, prioritized findings, technical verification tasks, business decisions, questions for counsel, and unreviewed scope. Cite authority, source URL, effective/publication date, and access date for legal claims. Do not label a property compliant or safe merely because no gap was observed.
+Report launch posture, prioritized findings, verification tasks, business decisions, counsel questions, and unreviewed scope. No observed gap is not proof of compliance.

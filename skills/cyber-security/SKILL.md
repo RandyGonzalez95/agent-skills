@@ -1,170 +1,54 @@
 ---
 name: cyber-security
-description: Review a local application workspace for security vulnerabilities in code, dependencies, configuration, user flows, and build/deployment workflows. Use for a security audit, vulnerability check, application hardening, or security-focused change review; provide evidence, prioritized fixes, and verification. Supports implementing fixes when requested.
+description: Audit application code and workflows for security risks; verify authorization coverage and implement requested fixes.
 ---
 
 # Cyber Security
 
-Help the user understand what could go wrong in their application, verify which risks
-are supported by evidence, and make protection concrete. Adapt to the actual stack;
-do not assume a JavaScript app or mistake every suspicious pattern for a vulnerability.
+Trace evidence in the actual stack; suspicious patterns alone are not vulnerabilities.
 
-## Scope and working mode
+## Scope
 
-- **Review** is the default for "check", "scan", or "audit": inspect the workspace,
-  run appropriate non-destructive checks, and write a report. Do not change application
-  code, dependencies, or deployment configuration just to perform a review.
-  Generate isolated authorization test artifacts as described below; keep persistent
-  application test/CI changes for requests to implement tests, fix, or harden.
-- **Review and fix** applies when the user asks to fix, secure, or harden the app:
-  implement supported local fixes and relevant regression checks, then update the
-  report with what was verified and what remains. Existing authorization persists.
-- **Change review** applies when the user scopes the task to a diff or PR: inspect
-  the changed behavior plus its callers, permissions, and deployment context. State
-  that this is not a full application review.
+- Review ("check", "scan", "audit"): inspect and run non-destructive checks; create isolated tests/reports without changing application code, dependencies, or configuration.
+- Review and fix ("fix", "secure", "harden"): implement supported local fixes and regression checks.
+- Change review: inspect the diff, callers, permissions, and deployment context; label its narrower scope.
 
-Use the current workspace unless the user supplies another location. Start with
-available evidence; ask only for missing information that changes a consequential
-decision. If this is a documentation/skills repository with no application, say so,
-review any applicable scripts/workflows, and request the application path for the
-application-specific work. Do not invent login, database, or deployment findings.
+Use the requested workspace. If no application exists, review applicable scripts/workflows and identify the missing app path; do not invent findings.
 
-Keep testing within the authorized target. A URL, credential, or cloud project found
-in code is not permission to probe that service. Prefer isolated local tests with fake
-accounts and stubbed email, payments, and network services. Check test/startup scripts
-and configuration before executing them: localhost can still use a production database.
-Do not trigger live payments, messages, deployment, migrations, brute-force attempts,
-or load tests as a side effect of a workspace review.
+Keep testing within authorized targets. Found URLs or credentials do not authorize live probes. Inspect startup/test hooks and service configuration: localhost may reach production. Use synthetic accounts and isolated dependencies; avoid live payments, messages, migrations, deployments, brute force, or load tests.
 
-## 1. Map the workspace and its trust boundaries
+## Map and trace
 
-Read applicable `AGENTS.md` instructions and check the working tree before making
-changes. Use `rg --files --hidden` with explicit exclusions for `.git`, installed
-dependencies, virtual environments, caches, and generated output. Do not exclude
-first-party source or infrastructure merely because it is hidden or gitignored;
-enumerate relevant ignored configuration separately without dumping secret values.
+Read repository instructions and working-tree state. Inventory first-party source, relevant hidden/ignored configuration, manifests, lockfiles, runtime versions, tests, infrastructure, and CI without exposing secrets. Exclude dependencies and generated/cache output.
 
-Identify:
+Map services, entry points, actors/roles, sensitive assets, trust boundaries, and important flows. Record commit/dirty state and coverage. Prioritize exposed paths, privileged actions, private data, and money; account for remaining scope and exclusions.
 
-- Applications/services in a monorepo; languages, frameworks, manifests, lockfiles,
-  runtime versions, existing security tools, tests, and package scripts.
-- Entry points: pages, APIs, server actions, background jobs, GraphQL/WebSockets,
-  uploads, webhook handlers, admin routes, and scheduled tasks actually present.
-- Assets and actors: private data, credentials, money, user roles, organizations or
-  tenants, anonymous visitors, and privileged service identities.
-- Enforcement boundaries: browser to server, server to database/storage, external
-  event to handler, tenant to tenant, and pull request to privileged build/deploy job.
-- Configuration: migrations, database/storage policies, containers, infrastructure
-  code, CI/CD, hosting configuration, and configuration examples.
+Read [code review](references/code-review.md). For state transitions, integrations, jobs, or CI/deployment, read [workflow review](references/workflow-review.md).
 
-Record the commit if available and whether uncommitted changes were included. Create
-a compact coverage map of components and important flows. Prioritize exposed paths,
-privileged operations, private data, and financial actions; continue through the
-remaining applicable surfaces. Explicitly name any unreviewed areas in a large repo.
+Trace input, transformations, enforcement, sensitive operations, and effects. Inspect shared middleware, route mounts, policies, serializers, and version-specific framework behavior before declaring controls missing.
 
-## 2. Inspect code and application workflows
+For important flows, establish allowed actors, preconditions, transitions, and side effects. Consider cross-user/tenant access, altered inputs, replay, concurrency, skipped steps, and failures. Browser restrictions do not prove server enforcement.
 
-Read [references/code-review.md](references/code-review.md) for application controls.
-Read [references/workflow-review.md](references/workflow-review.md) when the app has
-user state transitions, integrations, background jobs, or build/deployment workflows.
+## Verify
 
-For each candidate, trace **input -> transformations -> enforcement -> sensitive
-operation -> observable effect**. Inspect shared middleware, route mounting, database
-policies, serializers, and provider behavior before concluding a control is missing.
-Use framework documentation for the actual version where defaults matter.
+Read [tools and verification](references/tools-and-verification.md) before scanners or application execution. Choose stack-appropriate advisory, secret, static-analysis, and focused test checks. Trace business logic manually; scanner output alone is insufficient.
 
-For important user flows, establish the allowed actor, preconditions, state change,
-and side effect. Consider another user/tenant, missing or altered inputs, replay,
-concurrency, skipped steps, and dependency failure. Browser-only restrictions do not
-establish server-side protection. Include both an allowed case and a denied/abuse case
-when testing a security boundary.
+For application audits, read [IDOR/BOLA testing](references/idor-bola-testing.md), inventory every in-scope operation, and generate/run workspace-specific authorization tests. Test legitimate and denied/filtered access with synthetic fixtures and real enforcement. For change reviews, include affected operations and shared callers.
 
-## 3. Add tools and focused verification
+Reconcile inventory and executed results with [the coverage checker](scripts/check_authorization_coverage.py). Retain blocked/untestable operations with reasons. Skips, missing cases, failed setup, and unavailable runtimes are gaps, never passes. No application means not applicable, not a pretend suite.
 
-Read [references/tools-and-verification.md](references/tools-and-verification.md)
-before invoking scanners or running the application. Select checks for the detected
-stack: dependency advisories, secret detection, static analysis, relevant existing
-tests, and targeted local regression checks. A tool is supporting evidence, not the
-entire review. Business logic and ownership checks require tracing the application.
+Record tool version, scope, sanitized command, completion, and evidence. Investigate findings/failures; continue useful manual review if tools are unavailable. Verify current advisories and official version-specific guidance using public names and sanitized queries. Do not upload private code, secrets, or internal URLs; label offline freshness limits.
 
-### Automated IDOR/BOLA coverage
+## Report and fix
 
-For application audits, read [references/idor-bola-testing.md](references/idor-bola-testing.md)
-and generate and run workspace-specific object authorization tests. Discover every
-endpoint/operation in scope, derive expected permissions from the application, and
-test legitimate access plus access using another user's or tenant's objects. Use the
-workspace's test framework and isolated synthetic fixtures; do not substitute a generic
-scanner or source review for executed tests. For change reviews, include affected
-operations and shared authorization callers, and label the narrower scope.
+Use [reporting](references/reporting.md). Default to `security-reports/cyber-security-YYYY-MM-DD.md`; preserve prior reports unless updating the identified one is requested. Keep artifacts outside served/build output and do not automatically publish or commit them.
 
-Reconcile discovery with a per-operation inventory and check test results using
-[scripts/check_authorization_coverage.py](scripts/check_authorization_coverage.py).
-Keep untestable endpoints in the inventory with concrete blockers. Missing cases,
-skips, failed setup, and unavailable runtimes are coverage gaps. Every endpoint must
-be accounted for; only applicable operations with all required cases executed and
-passing can be described as tested successfully. If there is no application, report
-this phase as not applicable rather than generating a pretend suite.
+Each finding needs location, behavior, prerequisites, impact, evidence, fix, and verification. Separate confirmed findings, candidates, and hardening; deduplicate root causes while naming affected paths. A confirmed affected dependency does not prove application exploitability.
 
-For each tool record its version, scope, command with secrets removed, completion
-status, and relevant output. Investigate findings and failed runs. Missing tools,
-unsupported languages, absent lockfiles, network failures, and excluded files are
-coverage gaps, never clean results. Continue useful manual review when a tool is absent.
+Lead with consequential findings, link the report, and explain coverage and remaining access/runtime needs. A clean scan does not prove security or compliance.
 
-Check current official advisories and vendor/framework documentation for claims about
-affected versions or recommended security settings. Use public package names and
-sanitized descriptions in lookups; do not submit private code, secrets, or internal
-URLs to search or external scanning services. If offline, label advisory freshness
-and version-specific conclusions as unverified.
+When fixes are requested, change the enforcement boundary using established framework controls. Check dependency compatibility; avoid blind force updates. Verify prohibited behavior fails and legitimate behavior succeeds, then run relevant checks. Validate configuration changes and disclose remaining runtime checks.
 
-## 4. Triage and deliver an actionable report
+For ongoing protection, extend existing CI within scope; review its permissions and untrusted inputs. Identify external account/hosting changes separately and honor existing authorization. Local fixes are not deployed fixes.
 
-Use [references/reporting.md](references/reporting.md) for evidence, severity, and
-the report structure. Write to the user's requested path or, by default,
-`security-reports/cyber-security-YYYY-MM-DD.md`. Preserve previous reports with a
-suffix or update the identified report when the user requests a follow-up. Keep
-reports and scanner artifacts out of served/public/build output; do not commit,
-publish, or upload them automatically.
-
-Each finding needs a concrete location, affected behavior, realistic prerequisites,
-impact, evidence, a specific fix, and a verification method. Separate confirmed
-findings, candidates needing validation, and optional hardening. Deduplicate shared
-root causes while listing affected paths. An advisory affecting an exact dependency
-version can be confirmed even when application exploitability is still unknown;
-state that distinction.
-
-Lead the user-facing response with the most consequential findings in plain language,
-then link the report and give the next practical steps. Explain what was checked and
-what needs a deployed environment or account access. Never call the app "secure",
-"certified", or "free of vulnerabilities" from a clean scan. Say "No confirmed
-findings in the reviewed scope" when that is the supported result.
-
-## 5. Fix and prevent recurrence when requested
-
-Make the smallest coherent fix at the enforcement boundary; preserve legitimate
-behavior and existing user work. Reuse established framework controls instead of
-inventing authentication or cryptography. Review dependency updates for compatibility
-and affected transitive packages; do not blindly run force-update commands.
-
-For each security fix, verify the prohibited behavior fails and the allowed behavior
-still succeeds. Prefer a focused regression test for authorization, validation,
-signature checking, replay, or other meaningful behavior. Run the relevant existing
-checks. For configuration-only changes, validate the configuration with an appropriate
-parser/tool and describe runtime checks still required. A code change is not a
-verified deployed fix.
-
-When ongoing protection is requested, extend the existing CI with appropriate
-dependency, secret, and code checks rather than creating duplicate pipelines. Review
-permissions and untrusted-input handling in the new workflow too. Identify any
-hosting/account controls that need external configuration, such as MFA, alerts,
-rate limits, backups, or credential rotation. Prepare concrete changes and use the
-session's existing authorization; request only any additional external action that
-actually needs it. Do not represent local changes as live infrastructure changes.
-
-## Baselines
-
-Use [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/)
-for control requirements and the
-[Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
-for test ideas. The [OWASP Top 10](https://owasp.org/Top10/) is an awareness baseline,
-not a complete checklist. Link versioned requirements when citing specific IDs;
-do not claim ASVS compliance from this review.
+Use [ASVS](https://owasp.org/www-project-application-security-verification-standard/) for control requirements and [WSTG](https://owasp.org/www-project-web-security-testing-guide/) for test ideas. The [Top 10](https://owasp.org/Top10/) is not a complete checklist. Cite versioned requirement IDs; do not infer compliance.

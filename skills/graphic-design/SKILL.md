@@ -1,6 +1,6 @@
 ---
 name: graphic-design
-description: Create logos, icon sets, banners, social stills, and identity mockups from a visual brief. Use for static graphic assets rather than full websites, slide decks, or multi-slide social narratives.
+description: Create logos, icons, banners, social stills, and identity mockups from a visual brief.
 license: MIT
 metadata:
   author: claudekit
@@ -9,23 +9,19 @@ metadata:
 
 # Graphic Design
 
-Identify the purpose, audience, message, medium, dimensions, exact copy, brand assets, and required format. Resolve only consequential gaps. Use the user's chosen tool and style; do not automatically browse inspiration sites or generate three options.
+Establish purpose, audience, message, dimensions, exact copy, brand assets, and format. Honor the chosen tool and style; add research or options only when useful.
 
-## Choose the deliverable
+## Match the deliverable
 
-- **Logo:** Develop a recognizable mark suitable for its actual uses. Check silhouette, small-size readability, monochrome use, and relevant backgrounds. Distinguish raster concepts from usable vector artwork; do not label a mockup as a final logo system.
-- **Icons:** Extend the established system where one exists. Match stroke, grid, corner treatment, optical weight, and intended sizes. Use accessible labels in interface implementations; decorative icons need different treatment.
-- **Banner or social still:** Establish one visual hierarchy and a primary message or action. Keep important elements within actual crop/UI safe areas. A graphic CTA is not an interactive control.
-- **Identity mockup:** Place approved marks and copy on the requested applications. Distinguish a visual mockup from print-ready production artwork.
+- Logos: check silhouette, small sizes, monochrome, and backgrounds. Distinguish raster concepts, vector artwork, and final identity systems.
+- Icons: match the existing grid, stroke, corners, optical weight, and sizes. Distinguish informative from decorative icons in interfaces.
+- Banners/social stills: use a clear hierarchy and message with actual crop/UI safe areas. Graphic CTAs are not interactive controls.
+- Mockups: use approved marks and copy; distinguish visual concepts from print-ready files.
 
-## Produce
+## Produce and inspect
 
-Preserve exact logos, product photos, and text in deterministic layout/compositing where fidelity matters. Generate illustrative imagery only when useful and within requested scope. Check current tool schemas rather than inheriting model names, subscriptions, or filesystem paths.
+Preserve exact logos, photos, and text through deterministic layout where needed. Generate supporting imagery only within scope. Verify current tool capabilities and any claimed platform compliance.
 
-Build at the requested dimensions. Verify current platform specifications when asserting compliance. For print, get the supplier's size, bleed, color profile, and resolution requirements; do not impose a single specification on every print process. Avoid obsolete universal ad text-percentage rules.
+For print, use the supplier's dimensions, bleed, color profile, and resolution. Recompose sizes rather than stretching; vary art direction while holding the brief constant.
 
-For multiple variants, hold the brief constant while varying meaningful art direction. For multiple sizes, recompose rather than stretch. Use contrast against the actual background, clear hierarchy, and legibility at intended viewing size.
-
-## Inspect and hand off
-
-Inspect final exports for spelling, dimensions, cropping, logo proportions, image artifacts, and sharpness. Deliver the requested formats, editable source where produced, and a brief asset manifest. Retain source attribution and licenses. State whether output is a concept, production asset, or mockup.
+Inspect exports for text, dimensions, crop, proportions, artifacts, contrast, and sharpness at intended viewing size. Deliver requested formats, editable source when produced, and asset provenance/licenses. Label concepts, production assets, and mockups accurately.

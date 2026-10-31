@@ -1,24 +1,24 @@
 ---
 name: social-profile
-description: Review and rewrite social bios, profile positioning, and opening-video clarity for Instagram, TikTok, and comparable platforms. Use for profile copy and presentation audits rather than account-wide growth claims.
+description: Review and rewrite social bios and positioning; assess opening-video clarity.
 ---
 
 # Social Profile
 
-Identify the role or business, specific audience, useful result, and actual next-action destination. Transcribe supplied screenshots accurately and mark unreadable content rather than guessing.
+Identify role/business, audience, useful result, and actual action destination. Transcribe screenshots accurately; mark unreadable text.
 
-## Bio review and rewrite
+## Bio
 
-Diagnose concrete friction: unclear subject, broad audience, vague benefit, unsupported credentials, or competing actions. Connect each criticism to a practical rewrite. Critique copy rather than the person, including in a requested roast.
+Identify specific friction: unclear subject, broad audience, vague benefit, unsupported credentials, or competing actions. Tie each criticism to a rewrite; critique copy rather than the person, including roasts.
 
-Use content, benefit, and action as three functions; three lines are optional. Preserve the supplied voice. Do not invent offers, free resources, credentials, or links.
+Cover content, benefit, and action without requiring three lines. Preserve voice and real offers, credentials, resources, and links.
 
-Verify current field limits before making fit claims. Count the exact final bio with code, including spaces and line breaks, state the Unicode counting method when relevant, and use the platform editor as the final authority. Keep display name and website fields separate. Give alternatives when useful and recommend one with a reason.
+Verify current field limits before claiming fit. Count the exact final text with code, including spaces/newlines; state Unicode counting assumptions when relevant. The platform editor is final authority. Keep display-name and website fields separate. Offer and recommend alternatives only when useful.
 
-## Optional opening-video clarity test
+## Opening-video test
 
-For a requested five-video/five-second muted test, use the five identified videos or state the selection from the supplied profile. Inspect only seconds zero through five with sound off. Record the topic inferred and visible evidence for each, then the overall impression before comparing it with intended positioning.
+For the requested five-video/five-second muted test, use the identified clips or state the selection. Inspect only seconds zero through five, sound off. Record each inferred topic and visible evidence, then the overall impression before comparing intended positioning.
 
-Do not use audio, later footage, descriptions, or known bio context to fill gaps. Fewer than five inspectable clips means the full test is incomplete. A cover grid alone cannot establish a pass.
+Do not fill gaps with audio, later footage, descriptions, or bio knowledge. Fewer than five inspectable clips is incomplete; cover grids cannot prove a pass.
 
-For a broader audit, separate hook wording, topic, presentation format, opening visuals, and video structure. Mark unobservable elements. Suggest changes that fit the creator's capacity and verify actual performance separately from editorial judgment. Drafting a profile does not publish it.
+For broader audits, distinguish hook, topic, format, opening visuals, and structure. Mark unobservable elements and separate editorial judgment from measured performance. Recommend feasible changes; drafts do not publish profiles.

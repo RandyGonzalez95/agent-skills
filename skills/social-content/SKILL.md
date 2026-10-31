@@ -1,30 +1,24 @@
 ---
 name: social-content
-description: Capture, develop, prioritize, and organize social content ideas and editorial plans. Use for an idea inbox, content angles, pillars, calendars, or production tracking rather than finished copy or graphics.
+description: Capture and develop social content ideas, editorial calendars, and production plans.
 ---
 
 # Social Content
 
-Separate idea capture from development. A raw fragment is a valid idea; do not require a complete brief to save it.
+Separate capture from development. Save raw fragments without requiring a complete brief.
 
 ## Capture and track
 
-Preserve original wording, a recognizable title, and a source link if supplied. Classify the origin only when useful: planned ideation, active research, or a spontaneous trigger. Origin is different from production status.
+Preserve wording, recognizable title, and supplied source. Use the authorized tracker, check duplicates, and distinguish idea origin from production status. Without a destination, return a capture card labeled unsaved externally.
 
-Use the user's existing authorized tracker. If no destination is configured, return a capture card and say it has not been saved externally. Check for an existing matching idea before creating another record.
+Adapt to the existing stages; a possible sequence is inbox, scripting, ready to create, editing, finished. Finished is not published. Update status from actual work and give selected ideas one next action.
 
-A proposed progression is idea inbox, scripting, ready to create or record, editing, finished. Adapt to the existing workflow. Finished production does not mean published. Update status only when actual work supports it; keep one next action with each selected idea.
+## Develop
 
-## Develop and prioritize
+Establish audience, purpose, subject, and capacity. Clarify each idea's problem, credible consequence, useful perspective, and deliverable promise. Draw from real questions, objections, decisions, mistakes, demonstrations, and defensible opinions. Choose the angle before the hook; rewordings are not distinct ideas.
 
-Identify the audience, purpose, subject, and production capacity. For each selected idea, clarify the problem, credible consequence, useful solution or perspective, and promise the content can actually deliver.
+Select a feasible format and assets. Identify missing evidence; do not invent experiences, quotes, trends, or algorithmic benefits. Verify current platform claims when relevant.
 
-Find material in real questions, objections, decisions, mistakes, demonstrations, and defensible opinions. Develop the angle before polishing the hook. Distinct wording of the same point does not constitute distinct ideas.
+Prioritize relevance, specificity, proof, business fit, and effort. Match calendars to requested cadence and capacity.
 
-Choose the format for the idea: demonstration, comparison, story, diagnosis, decision, or participation. Recommend feasible production with available assets. Mark needed proof; do not invent personal experiences, customer quotes, trends, or algorithmic advantages.
-
-Prioritize audience relevance, specificity, evidence, business fit, and effort. For calendars, use the requested cadence and capacity rather than inventing a posting obligation. Research current trends or platform claims when the task depends on them.
-
-## Output
-
-For capture, return only the saved item or capture card. For development, provide concepts with their angle, format, execution outline, and evidence needed. Explain the strongest starting points briefly. Scheduling, publishing, and paid production are separate from ideation.
+Return the saved item/card for capture; for development, provide angle, format, execution outline, and needed evidence. Scheduling, publication, and paid production require their own scope.

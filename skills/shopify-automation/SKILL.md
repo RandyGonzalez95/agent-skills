@@ -1,24 +1,24 @@
 ---
 name: shopify-automation
-description: Turn Shopify smart-tag rules into Flow builder prompts or webhook and Admin API implementation plans. Use for customer/order tagging automations with explicit triggers, conditions, and tag lifecycle behavior.
+description: Translate Shopify customer/order tagging rules into Flow prompts or webhook and Admin API plans.
 ---
 
 # Shopify Automation
 
-Accept a list or JSON definitions with tag, entity, method, trigger, condition, action, and notes. Infer missing structure from the supplied intent, but resolve ambiguity about which record is tagged and when the rule applies.
+Accept lists or JSON rules with tag, entity, method, trigger, condition, action, and notes. Infer structure where clear; resolve which record is tagged and when.
 
-## Select and verify the route
+## Choose the route
 
-Respect an explicit Flow or custom route. Verify current Flow triggers, available fields, actions, builder capabilities, and store entitlements before claiming feasibility. Do not inherit a static list of unsupported events or fields from older notes. If the requested route cannot express the rule, explain the specific missing capability and propose an alternative.
+Honor Flow or custom implementation requests. Verify current triggers, fields, actions, builder capabilities, and store entitlements. If a route cannot express a rule, identify the missing capability and propose an alternative.
 
-For Flow, produce one copyable natural-language instruction per workflow: when the verified event occurs, check the condition, then perform the exact tag actions. Include removals and related entity changes when requested. Keep caveats outside the prompt. Provide manual UI steps when requested or when the chosen builder route is unavailable.
+For Flow, give one copyable instruction per workflow: event, conditions, exact tag additions/removals, and related record changes. Keep caveats outside prompts. Provide manual steps when requested or needed.
 
-For custom implementation, specify the verified webhook topic, needed payload fields or follow-up reads, target record identity, API version/scopes, and mutation behavior. Prefer a supported additive tag operation; if an update replaces a tag collection, explicitly preserve existing unrelated tags and handle concurrent updates rather than overwriting them blindly.
+For custom routes, specify webhook topic, payload/follow-up reads, target identity, API version/scopes, and mutation behavior. Prefer additive tag operations. If replacing a collection, preserve unrelated tags and handle concurrent updates.
 
-## Reliability
+## Reliability and delivery
 
-Define addition, removal, and re-entry conditions. Consider delayed events, changed customer state, missing data, and historical backfill. For webhooks, validate authenticity, deduplicate event IDs, bound retries, and avoid feedback loops caused by the tag update itself. Respect API rate limits and inspect errors before retrying.
+Define removal, re-entry, delayed-event, changed-state, missing-data, and backfill behavior. Verify webhook authenticity, deduplicate event IDs, bound retries, prevent update loops, and respect rate limits. Inspect errors before retrying.
 
-Test an eligible record, ineligible record, duplicate delivery, existing tags, and reversal where applicable. Keep credentials out of plans and source files.
+Test eligible, ineligible, duplicate, existing-tag, and reversal cases. Keep credentials out of plans/source.
 
-Deliver the prompts or implementation plan, verification sources, caveats, and test cases. A generated prompt is not an installed or activated workflow. Live activation and customer communications need the corresponding scope in the user's request.
+Deliver prompts or implementation plans with verification sources, caveats, and tests. Distinguish generated instructions from installed/active workflows; activation and customer communications require corresponding authorization.

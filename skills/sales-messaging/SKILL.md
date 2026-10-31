@@ -1,25 +1,25 @@
 ---
 name: sales-messaging
-description: Develop, retrieve, rehearse, and adapt positioning statements, sales answers, objection responses, pricing explanations, and scope boundaries from a business's actual offer and evidence.
+description: Develop, retrieve, adapt, and rehearse sales positioning, objections, pricing answers, and scope boundaries.
 ---
 
 # Sales Messaging
 
-Identify the business, audience, offer, evidence, and question being answered. Use a supplied approved message bank when available. Never inherit another business's category, prices, background, clients, or guarantees.
+Use the actual business, audience, offer, evidence, and approved message bank. Never import another business's prices, clients, background, or guarantees.
 
-## Choose the mode
+## Modes
 
-- **Develop:** Record the question, truthful answer, evidence, claim limit, and next action. Mark language as candidate until the user approves it.
-- **Retrieve:** Return the exact approved wording and its source when exact recall is requested. Missing source text is not permission to reconstruct it as a quotation.
-- **Adapt:** Preserve meaning and limitations while fitting the channel. Identify the source message when traceability matters.
-- **Rehearse:** Ask one realistic prospect question at a time, wait for the answer, and compare accuracy, concision, evidence, scope boundaries, and clarity. Offer one correction and retry. Do not grade personality.
+- Develop: pair the question and truthful answer with evidence, claim limits, and next action. Mark wording as candidate until approved.
+- Retrieve: return exact approved wording and source when requested; do not reconstruct missing text as a quote.
+- Adapt: preserve meaning and limitations while fitting the channel.
+- Rehearse: ask one realistic question, wait, assess accuracy, concision, evidence, scope, and clarity, then give one correction and retry. Do not grade personality.
 
-## Cover the actual commercial decisions
+## Commercial accuracy
 
-Useful topics include who the business helps, the problem it solves, differentiation, diagnosis, sequencing, price and scope, proof, objections, client responsibilities, complaints, and next steps. Select only those relevant to the request.
+Cover only relevant decisions: audience, problem, differentiation, diagnosis, sequence, price/scope, proof, objections, responsibilities, complaints, and next steps.
 
-Connect recommendations to the observed business constraint. Distinguish controllable deliverables from outcomes dependent on buyers or the market. Confirm current pricing before using it in a live offer. For scope expansion, state the proposed change and its implications without creating an unapproved commitment.
+Tie advice to observed constraints. Separate controllable deliverables from market-dependent outcomes; verify pricing before live offers. Explain proposed scope changes without committing to them.
 
-For complaints, separate the agreed commitment, observed failure, ownership, remedy, and next update. Do not invent a deadline, admission, case study, or performance guarantee.
+For complaints, distinguish commitment, failure, ownership, remedy, and next update. Do not invent admissions, deadlines, case studies, or guarantees.
 
-Keep approved statements and candidate revisions distinguishable in the user's chosen message bank. Preparing a script does not authorize contacting a prospect or changing an offer.
+Keep approved and candidate messages distinct. Drafting does not authorize prospect contact or offer changes.

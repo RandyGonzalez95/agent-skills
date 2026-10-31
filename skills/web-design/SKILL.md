@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: Design, build, and review websites and application interfaces; analyze supplied visual references and apply project feedback. Includes responsive layout, accessible components, styling, and searchable UI guidance. Excludes purely backend work.
+description: Design, build, and review responsive websites and app interfaces using project conventions and visual references.
 license: MIT
 metadata:
   curation: Consolidated website, reference-analysis, UI styling, and design-intelligence workflows
@@ -8,28 +8,26 @@ metadata:
 
 # Web Design
 
-Inspect the existing project, stack, components, assets, and established design decisions. Identify the audience, page purpose, primary action, required content, and constraints. For a new site, ask only for consequential gaps; do not require a fixed number of inspiration sites or contact fields that the site does not need.
+Inspect the stack, components, assets, and existing decisions. Establish audience, page purpose, primary action, content, and constraints. Resolve consequential gaps without imposing a fixed briefing process.
 
-## References and project memory
+## References and direction
 
-Analyze the user's supplied sites, images, screenshots, or source files. Extract transferable composition, hierarchy, typography, color, spacing, imagery, and interaction principles. Do not copy distinctive branding or text. A screenshot supports visual observations, not exact CSS values or unobserved behavior.
+Extract composition, hierarchy, type, color, spacing, imagery, and interaction principles from supplied references without copying distinctive branding/text. Screenshots cannot establish exact CSS or unseen behavior.
 
-For exact website style extraction, read [reference analysis](references/reference-analysis.md). Use rendered styles and screenshots together; distinguish defined tokens from applied values and measured observations from proposals.
+For exact style extraction, read [reference analysis](references/reference-analysis.md); combine rendered styles with screenshots and distinguish defined/applied values, measurements, and proposals.
 
-Keep reference notes, adopted components, project preferences, and feedback distinct in the existing project documentation. Record source and date. Generalize a preference across projects only when the user indicates that scope. Do not write new preferences into the installed skill or import the previous owner's style history.
+Keep sourced, dated reference notes and feedback in existing project documentation. Generalize preferences only when requested; do not store project choices in the installed skill.
 
-## Design and build
+## Build
 
-Form a concise brief and one coherent visual direction. Define reusable roles for type, color, spacing, surfaces, imagery, and motion. Keep the existing stack unless the task calls for a change. Use established components before introducing a new library; external component sourcing is optional and must fit the project and its licenses.
+Choose a coherent direction with reusable type, color, spacing, surface, image, and motion roles. Preserve the stack and reuse components unless change is warranted. Check licenses for external assets/components.
 
-Use the bundled [design search](references/design-search.md) when product, palette, typography, chart, interaction, or stack guidance would help. Results are candidate recommendations, not brand facts or authority over the user's choices.
+Use [design search](references/design-search.md) when guidance is needed; its results are candidates, not brand facts or overrides.
 
-Build semantic, responsive interfaces with named controls, visible focus, keyboard operation, understandable errors, and appropriate loading/empty states. Recompose mobile layouts instead of merely shrinking them. Preserve zoom, reduce motion when requested by the system preference, and reserve media dimensions to limit layout shifts.
+Build semantic, responsive interfaces with named controls, keyboard access, visible focus, clear errors, and relevant loading/empty states. Recompose mobile layouts, preserve zoom, respect reduced motion, and reserve media dimensions.
 
-For shadcn/ui, Tailwind, or another framework, inspect the installed version and current documentation before changing configuration. Do not force React, Tailwind, a particular animation library, or an unavailable skill onto every project.
+Check installed framework versions and current documentation before configuration changes. Use supplied business facts or labeled placeholders. Distinguish visual implementation from working backend behavior.
 
-Use supplied business facts and clearly marked placeholders. Do not invent testimonials, addresses, prices, metrics, or credentials. Implement the requested experience; a visual mockup does not establish that its backend works.
+## Verify
 
-## Verify and deliver
-
-Read [quality pass](references/quality-pass.md) for a complete page or substantial redesign. Inspect rendered output at relevant viewport sizes and exercise the primary journey. Run appropriate project checks and repair material failures. Report what works, where to view it, and remaining limitations. Use the requested hosting workflow when publication is in scope.
+Read [quality pass](references/quality-pass.md) for complete pages or substantial redesigns. Inspect relevant viewports, exercise the primary journey, and run appropriate project checks. Repair material failures; report working behavior, preview location, and limitations. Use the requested hosting workflow when publication is authorized.

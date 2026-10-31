@@ -1,30 +1,24 @@
 ---
 name: automation
-description: Plan, implement, and troubleshoot CRM and cross-app workflows, including GoHighLevel, with clear triggers, ownership, duplicate handling, and measurable outcomes. Use for automation builds and adoption plans rather than routine task or note edits.
+description: Build and troubleshoot CRM and cross-app automations, including GoHighLevel, with reliable triggers and handoffs.
 ---
 
 # Automation
 
-Start with the recurring task and desired outcome. Inspect the current systems, account scope, existing workflows, and actual tool access. A historic stack list is not a live account inventory. Use existing suitable tools before recommending additional subscriptions.
+Identify the recurring task, outcome, owner, account scope, existing workflows, and available tools. Prefer suitable existing systems over new subscriptions; verify live access and entitlements.
 
-## Define the workflow
+## Define and build
 
-Capture outcome, owner, account/location, trigger, eligibility, authoritative record, stable identifier, required fields, actions, success condition, and failure destination. For a build or handoff, use [workflow brief](references/workflow-brief.md).
+Use the [workflow brief](references/workflow-brief.md) for builds and handoffs. Specify trigger, eligibility, authoritative record, stable identifier, fields, actions, success, and failure destination. Choose one source of truth per record type; avoid unnecessary bidirectional sync. Use deterministic logic for matching and state changes, and AI where interpretation or drafting helps.
 
-Choose one source of truth per record type. Link other systems to it; avoid unnecessary bidirectional synchronization. Use deterministic logic for matching, routing, and state changes, with AI only for interpretation or drafting that benefits from it.
+Verify current connector schemas and product capabilities. For GoHighLevel, distinguish workflow, conversational, voice, and agent products.
 
-For GoHighLevel, distinguish its workflow, conversational, voice, and agent products using current documentation and actual account entitlements. Verify the available connector schema instead of assuming an app visible in one host is available in another. Apply the same discipline to other platforms.
+Reuse existing fields and workflows. Start inactive with synthetic or authorized test records where supported. Define re-entry, event deduplication, bounded retries, and loop prevention. Inspect delivery logs before retrying an uncertain send.
 
-## Build and test
+## Verify and hand off
 
-Reuse appropriate fields and workflows. Begin with a draft/inactive configuration and synthetic or authorized test records where supported. Specify re-entry rules, stable event keys, duplicate prevention, bounded retries, and loop prevention. Inspect delivery logs before retrying an ambiguous send.
+Test normal, duplicate, missing-input, downstream-failure, and ineligible/opted-out cases where applicable. Inspect saved configuration and execution evidence. A design request alone does not authorize customer contact, activation, access grants, or spending; honor existing session authorization.
 
-Exercise the normal path, duplicate event, missing input, failed downstream action, and ineligible/opted-out contact where messaging applies. Check saved configuration and actual execution evidence.
+Measure successful runs, missed/duplicate actions, rework, maintenance, and incremental cost. Activity alone does not prove conversion gains.
 
-Separate planning from sending, publishing, granting access, and spending. Honor the user's existing authorization, but do not infer permission to contact customers from a request to design an automation.
-
-## Adoption and handoff
-
-Measure completed runs, missed or duplicate actions, review/rework, maintenance, and incremental cost. Do not equate automated activity with conversion gains. Recommend keep, improve, or stop based on evidence.
-
-Report verified state precisely: designed, configured, tested, active, or monitored. Provide relevant workflow/record links, test results, and a disable/rollback route. If access prevents implementation, finish the usable specification and label it unimplemented.
+Report the verified state: designed, configured, tested, active, or monitored. Include workflow links, results, and rollback/disable instructions. If implementation is blocked, deliver a usable specification labeled unimplemented.

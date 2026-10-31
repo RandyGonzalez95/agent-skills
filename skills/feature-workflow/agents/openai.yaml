@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature Workflow"
+  short_description: "Design, implement, review, and deliver a feature"
+  default_prompt: "Use $feature-workflow to implement the specified feature, test and review it, clean up the code, build it, and deliver it to main after required checks pass."

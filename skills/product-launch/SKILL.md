@@ -1,28 +1,24 @@
 ---
 name: product-launch
-description: Coordinate product claims, launch readiness, presales, ecommerce, CRM handoffs, and fulfillment using controlled facts and clear ownership. Use for product launch operations rather than a particular brand or product.
+description: Coordinate launch claims, readiness, presales, checkout, CRM handoffs, and fulfillment.
 ---
 
 # Product Launch
 
-Identify the product, launch objective, audience, workstreams, owners, and decision sources. Separate approved facts, dated operating decisions, proposed strategy, and unknowns. Do not inherit product specifications, inventory, prices, dates, or contact lists from past projects.
+Identify product, objective, audience, workstreams, owners, and decision sources. Separate approved facts, dated decisions, proposals, and unknowns; never import previous product specifications or contact lists.
 
-## Product truth
+## Claims and ownership
 
-Maintain a project claim ledger with statement, source, date, responsible owner, approval state, permitted use, and unresolved conflict. A design render, campaign brief, or spreadsheet model does not prove product performance. Recency alone does not establish approval.
+Keep a project claim ledger with statement, source/date, owner, approval, permitted use, and conflicts. Renders, briefs, and models do not prove performance; recency does not prove approval. Resolve conflicts with the owner. Verify public offers and checkout separately from plans.
 
-Resolve conflicting specifications or policies with the responsible owner. Verify current public offers and checkout behavior separately from internal plans. Use factual, audience-respectful messaging; do not infer medical, compatibility, safety, or performance claims from a general product description.
+Do not infer medical, compatibility, safety, or performance claims. Keep changing business facts and private contacts in appropriate project records.
 
-## Launch and handoffs
+Assign product, offer/policy, creative, technical, inventory, fulfillment, and support owners. Choose authoritative records for orders, inventory, leads, and activity.
 
-Assign ownership for product facts, offer/policies, creative, technical delivery, inventory, fulfillment, and customer support. Choose one authoritative home for orders, inventory, leads, and activity notes; avoid uncontrolled duplicate records.
+## Readiness
 
-For presales, verify the current eligible segment, suppression/permission boundaries, offer, destination, and note location before authorized outreach. Keep private contact and sensitive information out of reusable skill files and public deliverables.
+Before authorized presale outreach, verify segment eligibility, suppressions/permissions, offer, destination, and note location. Planning alone does not authorize customer contact or real orders.
 
-Check the real purchase journey: offer eligibility and expiry, discount, tax, shipping, confirmation, order record, CRM handoff, inventory allocation, and fulfillment readiness. Use a suitable authorized test route; do not place real orders or contact customers merely to prepare a plan.
+Test eligibility/expiry, discounts, tax, shipping, confirmation, orders, CRM handoff, inventory allocation, and fulfillment through an authorized route. Distinguish test-mode checkout from verified live behavior.
 
-## Report readiness
-
-Report completed work with evidence, owner decisions, unresolved questions, dependencies, next action, and dates that are actually agreed. Distinguish a test-mode checkout from a verified live purchase path and an internal sales target from a public promise.
-
-Deliver the requested launch plan, readiness assessment, or status update. Keep volatile business facts in dated project references. Escalate unverified claims or policy decisions to the appropriate owner rather than filling gaps with plausible language.
+Deliver the requested plan, assessment, or status with evidence, dependencies, owner decisions, next actions, and agreed dates. Keep targets separate from public promises; send unresolved claims and policy decisions to their owner.

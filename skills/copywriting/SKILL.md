@@ -1,30 +1,22 @@
 ---
 name: copywriting
-description: Write or revise emails, outreach, website copy, founder stories, and social text using the user's intended meaning and supplied voice samples. Use for finished prose or voice matching; use brand for a reusable brand guide.
+description: Write or revise emails, website copy, stories, and social text using supplied facts and voice samples.
 ---
 
 # Copywriting
 
-Identify the reader, relationship, purpose, and intended next action from the supplied context. Ask only when a missing fact changes the substance. Draft the requested copy first.
+Infer reader, relationship, purpose, and next action from the supplied context. Resolve only substantive gaps. Return the requested copy before explanations.
 
-## Establish the voice
+## Voice and substance
 
-Use the user's samples and explicit preferences. Distinguish the author's own statements from quoted advice, candidate positioning, and transcription errors. Preserve strong original phrases and emotional intensity where present. Without samples, use clear, natural language appropriate to the audience and label close voice matching as unverified.
+Use explicit preferences and samples. Distinguish the author's statements from quotations, proposed positioning, and transcription errors. Preserve strong phrases and emotional intensity. Without samples, write naturally for the audience and avoid claiming an exact voice match.
 
-Do not inherit a previous author's biography, punctuation bans, catchphrases, tone, or commercial position. A project preference applies to that project unless the user makes it broader.
+Keep project preferences scoped; do not import another author's biography, catchphrases, or commercial position. Preserve facts, qualifications, promises, scope, and team credit. Distinguish built, tested, published, adopted, and commercially successful.
 
-## Write and revise
+## Draft and check
 
-- Lead with the actual situation or reason for writing. Make warmth specific to the relationship.
-- Connect observations to consequences and recommendations when useful. Avoid forcing every message into one formula.
-- Prefer concrete nouns, active verbs, and language the speaker could say aloud. Keep formality appropriate to the context.
-- Preserve facts, qualifications, scope, promises, and team credit. Distinguish built, tested, published, adopted, and commercially successful.
-- For personal stories, use actual moments and choices. Do not invent dialogue, emotional causes, credentials, customer reactions, or outcomes.
-- For work in progress, describe the question, attempt, evidence, and next decision without manufacturing a triumph.
-- For hooks and headlines, name a recognizable situation and a payoff the content delivers. Test recognition, relevance, specificity, credibility, and voice before adding wordplay.
+Lead with the actual situation. Use concrete nouns, active verbs, and speech the author could say aloud. Connect observations to consequences and recommendations when useful without forcing a formula.
 
-## Deliver
+For stories, use real moments and choices; do not invent dialogue, motives, credentials, reactions, or outcomes. For unfinished work, describe the question, attempt, evidence, and next decision. Hooks should name a recognizable situation and deliver a credible payoff.
 
-Match the requested length and format. Provide alternatives when the user is choosing a direction, not automatically for every edit. Check that the point and next action are clear, the claims are supported, and the copy reads naturally aloud. Return copy before explanations; identify only consequential factual gaps.
-
-Drafting outreach does not send it. For an exact approved phrase, retrieve the supplied wording rather than paraphrasing it or claiming a new draft is approved.
+Match requested length and format. Offer alternatives when a choice is needed. Check clarity, supported claims, voice, and next action; flag only consequential gaps. Retrieve exact approved wording when requested. Drafting outreach does not send it.
